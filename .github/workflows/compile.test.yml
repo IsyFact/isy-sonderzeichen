@@ -1,0 +1,54 @@
+name: Compilieren und Test
+run-name: Workflow started by >${{github.actor}}<
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/*
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    #
+    # Initial Environment-Setup
+    #
+    - name: Step 'actions/checkout@v4''
+      uses: actions/checkout@v4
+      
+    - name: Step 'actions/setup-java@v4''
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
+
+    #
+    # Build and test
+    #
+    # batch-mode prevents maven to ask for anything
+    - name: Step 'mvn --batch-mode clean compile test-compile test'
+      run: mvn --batch-mode clean compile test-compile test package
+
+    #
+    # Publish
+    #
+    - name: Step 'actions/upload-artifact@v4 target.package'
+      uses: actions/upload-artifact@v4
+      with:
+        name: target.package
+        path: ${{github.workspace}}/target/*.jar    
+          
+    - name: Step 'actions/upload-artifact@v4 target.build-and-test'
+      uses: actions/upload-artifact@v4
+      with:
+        name: target.build-and-test
+        path: ${{github.workspace}}/**/target/**
+
+    #
+    # Diagnostic
+    #
+    - name: Step './.github/actions/dump-environment' 
+      uses: ./.github/actions/dump-environment
