@@ -3,7 +3,7 @@ on:
   pull_request:
     branches:
       - master
-      - 'feature/**'
+      - develop
 
 jobs:
   check-commit-message:
