@@ -1,5 +1,5 @@
-![GitHub Sprache](https://img.shields.io/badge/Language-Java-orange)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+![GitHub Sprache](https://img.shields.io/badge/Language-Java_21-orange)
+[![License](https://img.shields.io/badge/License-Apache_2.0-orange)](https://opensource.org/licenses/Apache-2.0)
 ![GitHub IsyFact](https://img.shields.io/badge/IsyFact-IsyLogging_3.0.0-blue)
 
 
