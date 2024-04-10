@@ -1,0 +1,16 @@
+# Feature Workflow: Compile, Test, SonarCloudScan
+name: Feature Workflow
+
+on:
+  pull_request:
+    branches:
+      - develop
+  workflow_dispatch:
+
+jobs:
+  MavenBuild:
+    uses: IsyFact/isyfact-standards/.github/workflows/maven_build_template.yml@master
+    with:
+      jdk-version: 21
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
