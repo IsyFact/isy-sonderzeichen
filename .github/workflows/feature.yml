@@ -1,9 +1,10 @@
-name: Feature - Compile, Test, SonarCloudScan
+# Feature Workflow: Compile, Test, SonarCloudScan
+name: Feature Workflow
 
 on:
-  push:
+  pull_request:
     branches:
-      - feature/*
+      - develop
   workflow_dispatch:
 
 jobs:
