@@ -1,10 +1,11 @@
-# Feature Workflow: Compile, Test, SonarCloudScan
-name: Feature Workflow
+# Maven Build: Compile, Test, SonarCloudScan
+name: Maven Build
 
 on:
   push:
     branches:
       - develop
+      - release/*
   pull_request:
     branches:
       - develop
