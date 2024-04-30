@@ -1,0 +1,20 @@
+name: Maven Dependency Scan
+on:
+  push:
+    branches:
+      - develop
+      - release/*
+    paths:
+      - 'pom.xml'
+  schedule:
+    - cron: '0 2 * * 1' # Weekly on Monday at 02:00 AM UTC
+
+jobs:
+  dependencies:
+    uses: IsyFact/isyfact-standards/.github/workflows/maven_dependency_scan_template.yml@master
+    with:
+      jdk-version: 21
+      snyk-reference: $GITHUB_REF_NAME
+      snyk-organization: ${{ vars.SNYK_ORG_ID }}
+    secrets:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
