@@ -6,8 +6,6 @@ on:
       - release/*
     paths:
       - 'pom.xml'
-  schedule:
-    - cron: '0 2 * * 1' # Weekly on Monday at 02:00 AM UTC
 
 jobs:
   dependencies:

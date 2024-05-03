@@ -4,9 +4,6 @@ on:
     branches:
       - develop
 
-permissions:
-  contents: read
-
 jobs:
   DependencyReview:
     uses: IsyFact/isyfact-standards/.github/workflows/dependency_review_template.yml@master
