@@ -1,0 +1,25 @@
+name: Maven Deploy
+
+on:
+  release:
+    types:
+      - released
+
+jobs:
+  Build:
+    uses: IsyFact/isyfact-standards/.github/workflows/maven_build_template.yml@master
+    with:
+      version: ${ github.ref_name}
+      sonar-skip: true
+
+  Deploy:
+    uses: IsyFact/isyfact-standards/.github/workflows/maven_deploy_template.yml@master
+    with:
+      version: ${{ github.ref_name }}
+      deploy-url-release: https://maven.pkg.github.com/IsyFact/isy-sonderzeichen
+      sbom: true
+    secrets:
+      GPG_PRIVATE_KEY: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+      GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+      DEPLOY_SERVER_USER_NAME: ${{ secrets.MAVEN_CENTRAL_USER_NAME }}
+      DEPLOY_SERVER_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
