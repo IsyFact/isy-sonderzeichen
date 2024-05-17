@@ -5,7 +5,8 @@ on:
   push:
     branches:
       - develop
-      - release/*
+      - release/**
+      - hotfix/**
   pull_request:
     branches:
       - develop
