@@ -1,25 +1,42 @@
 name: Maven Deploy
 
 on:
-  release:
-    types:
-      - released
+  push:
+    branches:
+      - 'releases/**'
+
+  pull_request:
+    branches:
+      - develop
 
 jobs:
-  Build:
+  Version:
+    uses: IsyFact/isyfact-standards/.github/workflows/next_version.yml@master
+    with:
+      next-version: 4.0.0
+      calculate-rc: ${{ startsWith(github.ref, 'refs/heads/release/') }}
+
+  MavenBuild:
+    needs: [ Version ]
     uses: IsyFact/isyfact-standards/.github/workflows/maven_build_template.yml@master
     with:
-      version: ${ github.ref_name}
-      sonar-skip: true
+      jdk-version: 21
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   Deploy:
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/heads/release/'))
+    needs: [MavenBuild, Version]
     uses: IsyFact/isyfact-standards/.github/workflows/maven_deploy_template.yml@master
     with:
-      version: ${{ github.ref_name }}
-      deploy-url-release: https://maven.pkg.github.com/IsyFact/isy-sonderzeichen
-      sbom: true
+      version: ${{ needs.Version.outputs.next-version }}
+      jdk-version: 21
+      maven-opts: '-DaltDeploymentRepository=github::default::https://maven.pkg.github.com/IsyFact/isy-sonderzeichen'
+      deploy-server-id: github
+      sbom: ${{ startsWith(github.ref, 'refs/heads/release/') }}
+      sign: true
     secrets:
       GPG_PRIVATE_KEY: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
       GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
-      DEPLOY_SERVER_USER_NAME: ${{ secrets.MAVEN_CENTRAL_USER_NAME }}
-      DEPLOY_SERVER_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
+      DEPLOY_SERVER_USER_NAME: ${{ github.actor }}
+      DEPLOY_SERVER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
