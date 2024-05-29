@@ -23,6 +23,7 @@ jobs:
     needs: [ Version ]
     uses: IsyFact/isyfact-standards/.github/workflows/maven_build_template.yml@master
     with:
+      version: ${{ needs.Version.outputs.next-version }}
       jdk-version: 21
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
