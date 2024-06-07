@@ -35,7 +35,7 @@ jobs:
     with:
       version: ${{ needs.Version.outputs.next-version }}
       jdk-version: 21
-      maven-opts: '-DaltDeploymentRepository=github::2.8.2::https://maven.pkg.github.com/IsyFact/isy-sonderzeichen'
+      maven-opts: '-DaltDeploymentRepository=github::default::https://maven.pkg.github.com/IsyFact/isy-sonderzeichen'
       deploy-server-id: github
       sbom: ${{ startsWith(github.ref, 'refs/heads/release/') }}
       sign: true
