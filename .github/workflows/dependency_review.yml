@@ -5,6 +5,13 @@ on:
       - develop
       - master
 
+  push:
+    branches:
+      - feature/IFS-2835_license_management_isy_sonderzeichen
+
 jobs:
   DependencyReview:
-    uses: IsyFact/isyfact-standards/.github/workflows/dependency_review_template.yml@master
+    uses: IsyFact/isyfact-standards/.github/workflows/dependency_review_template.yml@feature/IFS-2835_license_management_isy_sonderzeichen
+    with:
+      base-ref: 'develop'
+      head-ref: ${{ github.ref }}
