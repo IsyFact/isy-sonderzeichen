@@ -61,6 +61,8 @@
     - Removed 'de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.TransformatorFactory'
     - Removed 'de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.TestTransformatorFactory'
 
+- Antora-Komponente anlegen (IFS-3851)
+
 	
 	
 	
