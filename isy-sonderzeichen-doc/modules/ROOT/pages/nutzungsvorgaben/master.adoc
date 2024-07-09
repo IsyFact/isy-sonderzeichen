@@ -1,0 +1,7 @@
+= Nutzungsvorgaben isy-sonderzeichen
+
+Hier finden Sie nach Umzug von isy-sonderzeichen die
+Nutzungsvorgaben der Komponente.
+
+Bis zum Abschluss der Arbeiten finden Sie die Nuzungsvorgaben an der bisherigen Stelle der 
+https://isyfact.github.io/isyfact-standards-doku/dev/isy-sonderzeichen/nutzungsvorgaben/master.html[IsyFact Dokumentation]
