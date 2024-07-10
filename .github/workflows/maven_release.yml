@@ -26,7 +26,7 @@ jobs:
       DEPLOY_SERVER_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
 
   DependencyMonitor:
-    needs: [ Deploy ]
+    needs: [ DeployMavenCentral ]
     uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_dependency_scan_template.yml@v1.0.0
     with:
       jdk-version: 21
