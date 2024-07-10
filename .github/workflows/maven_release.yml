@@ -15,6 +15,7 @@ jobs:
     needs: [ Build ]
     uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_deploy_template.yml@v1.0.0
     with:
+      jdk-version: 21
       version: ${{ github.ref_name }}
       maven-opts: '-P centralRelease'
       deploy-server-id: ossrh
@@ -31,7 +32,7 @@ jobs:
     uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_dependency_scan_template.yml@v1.0.0
     with:
       jdk-version: 21
-      snyk-reference: $GITHUB_REF_NAME
+      snyk-reference: ${{ github.ref_name }}
       snyk-organization: ${{ vars.SNYK_ORG_ID }}
     secrets:
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
