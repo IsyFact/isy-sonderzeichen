@@ -13,7 +13,7 @@ jobs:
 
   DeployMavenCentral:
     needs: [ Build ]
-    uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_deploy_template.yml@v1.0.0
+    uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_deploy_template.yml@v1.1.0
     with:
       jdk-version: 21
       version: ${{ github.ref_name }}
@@ -21,6 +21,7 @@ jobs:
       deploy-server-id: ossrh
       sbom: true
       sign: true
+      environment: 'release'
     secrets:
       GPG_PRIVATE_KEY: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
       GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
