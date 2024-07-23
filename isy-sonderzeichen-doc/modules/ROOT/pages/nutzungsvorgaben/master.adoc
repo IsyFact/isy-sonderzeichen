@@ -1,7 +1,9 @@
 = Nutzungsvorgaben isy-sonderzeichen
 
-Hier finden Sie nach Umzug von isy-sonderzeichen die
-Nutzungsvorgaben der Komponente.
+inculde::glossary:licence:partial$licence.adoc[]
 
-Bis zum Abschluss der Arbeiten finden Sie die Nuzungsvorgaben an der bisherigen Stelle der 
-https://isyfact.github.io/isyfact-standards-doku/dev/isy-sonderzeichen/nutzungsvorgaben/master.html[IsyFact Dokumentation]
+include::thisdoc.adoc[tags=inhalt]
+
+include::inhalt.adoc[tags=inhalt]
+
+include::anhaenge.adoc[leveloffset=1]
