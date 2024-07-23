@@ -19,6 +19,7 @@ jobs:
       version: ${{ github.ref_name }}
       maven-opts: '-P centralRelease'
       deploy-server-id: ossrh
+      deploy-server-url: "https://oss.sonatype.org/"
       sbom: true
       sign: true
     secrets:
