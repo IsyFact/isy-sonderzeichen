@@ -63,6 +63,9 @@
 
 - Antora-Komponente anlegen (IFS-3851)
 
-	
+# IsyFact 3.0.0
+
+- IFS-2272: SLES entfernt und Link auf Dokumentation für Language und Encoding unter Linux ergänzt
+
 	
 	
