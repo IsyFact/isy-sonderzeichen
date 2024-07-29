@@ -15,7 +15,7 @@ import java.util.Set;
 import static de.bund.bva.isyfact.sonderzeichen.dinnorm91379.konstanten.EreignisSchluessel.VALIDIERUNG;
 import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.KATEGORIE_JOURNAL;
 import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.TECHNIKDATEN;
-import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.getMarker;
+import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.getKSDMarker;
 
 /**
  * Provides methods for validating strings against DIN Norm 91379 data types.
@@ -37,7 +37,7 @@ public class ZeichenValidator {
      * Creates a new validator. Initializes the {@link #validCharactersByDatentyp} map.
      */
     public ZeichenValidator() {
-        logger.info(getMarker(KATEGORIE_JOURNAL, VALIDIERUNG, TECHNIKDATEN), "Erstelle ZeichenValidator.");
+        logger.info(getKSDMarker(KATEGORIE_JOURNAL, VALIDIERUNG, TECHNIKDATEN), "Erstelle ZeichenValidator.");
 
         try {
 
@@ -48,7 +48,7 @@ public class ZeichenValidator {
                 }
             }
         } catch (IOException e) {
-            logger.error(getMarker(KATEGORIE_JOURNAL, VALIDIERUNG, TECHNIKDATEN),
+            logger.error(getKSDMarker(KATEGORIE_JOURNAL, VALIDIERUNG, TECHNIKDATEN),
                     "Fehler beim Laden der Kategorietabelle => Abbruch");
             throw new RuntimeException(e);
         }

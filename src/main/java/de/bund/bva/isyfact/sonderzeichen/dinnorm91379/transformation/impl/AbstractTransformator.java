@@ -23,6 +23,7 @@ import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.Transformat
 import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.Transformator;
 import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.ZeichenKategorie;
 import org.slf4j.Logger;
+import org.slf4j.Marker;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -41,7 +42,7 @@ import static de.bund.bva.isyfact.sonderzeichen.dinnorm91379.konstanten.Ereignis
 import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.KATEGORIE_JOURNAL;
 import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.TECHNIKDATEN;
 import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.createSchluesselMarker;
-import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.getMarker;
+import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.getKSDMarker;
 
 
 /**
@@ -124,19 +125,19 @@ public abstract class AbstractTransformator implements Transformator {
      * @param zusaetzlicheTransformationsTabelle The path to the additional table, {@code null} if no additional table needs to be loaded
      */
     public void initialisiere(String zusaetzlicheTransformationsTabelle) {
-
-        getLogger().info(getMarker(KATEGORIE_JOURNAL, TRANSFORMATION, TECHNIKDATEN),
+        Marker marker = getKSDMarker(KATEGORIE_JOURNAL, TRANSFORMATION, TECHNIKDATEN);
+        getLogger().info(getKSDMarker(KATEGORIE_JOURNAL, TRANSFORMATION, TECHNIKDATEN),
                 "Initialisiere Transformator.");
 
         try {
             // Step 1: Load the standard transformation table.
-            getLogger().info(getMarker(KATEGORIE_JOURNAL, TRANSFORMATION, TECHNIKDATEN),
+            getLogger().info(getKSDMarker(KATEGORIE_JOURNAL, TRANSFORMATION, TECHNIKDATEN),
                     "Lade Transformationstabelle: {}", getStandardTransformationsTabelle());
             ladeInTabelle(getClass().getResourceAsStream(getStandardTransformationsTabelle()));
 
             // Step 2: Load additional transformation table, if available
             if (zusaetzlicheTransformationsTabelle != null) {
-                getLogger().info(getMarker(KATEGORIE_JOURNAL, TRANSFORMATION, TECHNIKDATEN),
+                getLogger().info(getKSDMarker(KATEGORIE_JOURNAL, TRANSFORMATION, TECHNIKDATEN),
                         "Lade Transformationstabelle: {}", zusaetzlicheTransformationsTabelle);
                 ladeInTabelle(getClass().getResourceAsStream(zusaetzlicheTransformationsTabelle));
             }
@@ -145,7 +146,8 @@ public abstract class AbstractTransformator implements Transformator {
             ladeInKategorieTabelle(getClass().getResourceAsStream(getKategorieTabelle()));
 
         } catch (Exception e) {
-            getLogger().error(createSchluesselMarker(TRANSFORMATION),
+            Marker schluesselMarker = createSchluesselMarker(TRANSFORMATION);
+            getLogger().error(schluesselMarker,
                     "Fehler beim Laden der Transformationstabelle => Abbruch", e);
             throw new RuntimeException(e);
         }
