@@ -116,7 +116,7 @@ Dies führt zu folgendem Datentyp für umgeschriebene Zeichenfolgen:
 
 .Datentyp für umgeschriebene Texte
 [id="sonderzeichen_klasse_transtext",reftext="{figure-caption} {counter:figures}"]
-image::../images/konzept/sonderzeichen_klasse_transtext.png[width=35%,align="center"]
+image::konzept/sonderzeichen_klasse_transtext.png[width=35%,align="center"]
 
 Die Attribute für den Datentyp „TransText“ haben die folgende Bedeutung:
 
@@ -140,7 +140,7 @@ Es ist möglich, mehrere Sätze von Transkriptionsregeln zu hinterlegen, um so a
 
 .Komponente Transkription
 [id="sonderzeichen_transkription.png",reftext="{figure-caption} {counter:figures}"]
-image::../images/konzept/sonderzeichen_transkription.png[pdfwidth=50%,width=50%,align="center"]
+image::konzept/sonderzeichen_transkription.png[pdfwidth=50%,width=50%,align="center"]
 
 Die Komponente Transkription bietet nach außen nur die Methode
 
