@@ -9,7 +9,7 @@ on:
 
 jobs:
   dependencies:
-    uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_dependency_scan_template.yml@v1.0.0
+    uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_dependency_scan_template.yml@v1.4.0
     with:
       jdk-version: 21
       snyk-reference: $GITHUB_REF_NAME
