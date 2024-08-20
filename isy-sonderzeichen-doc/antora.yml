@@ -1,5 +1,5 @@
 name: isy-sonderzeichen-doc
-title: isy-sonderzeichen Dokumentation
+title: isy-sonderzeichen
 version: '4.0.0 SNAPSHOT'
 display_version: '4.0.0 SNAPSHOT'
 start_page: ROOT:konzept/master.adoc

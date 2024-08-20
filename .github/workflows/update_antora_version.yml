@@ -1,0 +1,10 @@
+name: Update Antora version
+
+on:
+  push:
+    branches:
+      - release/**
+
+jobs:
+  UpdateAntoraVersion:
+    uses: IsyFact/isy-github-actions-templates/.github/workflows/update_antora_version_template.yml@v1.4.0
