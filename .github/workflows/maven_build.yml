@@ -4,12 +4,12 @@ name: Maven Build
 on:
   push:
     branches:
+      - main
       - develop
       - release/**
       - hotfix/**
-  pull_request:
-    branches:
-      - develop
+      - feature/**
+      - bugfix/**
   workflow_dispatch:
 
 jobs:
