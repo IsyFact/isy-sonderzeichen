@@ -16,6 +16,19 @@
         </encoder>
     </appender>
 
+    <turboFilter class="ch.qos.logback.classic.turbo.MarkerFilter">
+        <Marker>JOURNAL</Marker>
+        <OnMatch>ACCEPT</OnMatch>
+        <OnMismatch>DENY</OnMismatch>
+    </turboFilter>
+
+    <appender name="JOURNAL" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>JOURNAL: [P: %-5p] [T: %t] [L: %c] - [M: %m] %n</pattern>
+        </encoder>
+
+    </appender>
+
     <appender name="TEST" class="de.bund.bva.isyfact.testutil.TestAppender">
         <encoder>
             <pattern>[P: %-5p] [T: %t] [L: %c] - [M: %m] %n</pattern>
@@ -24,6 +37,7 @@
 
     <logger name="de.bund.bva.isyfact.sonderzeichen" level="INFO" additivity="true">
         <appender-ref ref="TEST"/>
+        <appender-ref ref="JOURNAL"/>
     </logger>
 
     <root level="ERROR">

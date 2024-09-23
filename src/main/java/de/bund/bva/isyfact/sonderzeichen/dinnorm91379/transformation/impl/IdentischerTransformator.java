@@ -29,6 +29,7 @@ public class IdentischerTransformator extends AbstractTransformator {
     /**
      * Logger.
      */
+
     private static final Logger LOG = LoggerFactory.getLogger(IdentischerTransformator.class);
 
     @Override

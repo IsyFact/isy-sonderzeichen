@@ -30,23 +30,19 @@ public class CombinedMarkerFactory {
      * @return The root marker.
      */
     public static Marker getKSDMarker(final String kategorie, final String schluessel, final String datentyp) {
-        Marker rootMarker = MarkerFactory.getMarker(ROOTMARKER);
+        Marker rootMarker = createRootMarker();
         rootMarker.add(createMarker(KATEGORIE, kategorie));
         rootMarker.add(createMarker(SCHLUESSEL, schluessel));
         rootMarker.add(createMarker(DATENTYP, datentyp));
         return rootMarker;
     }
 
-    private static Marker removeMarker(String... names) {
+    private static Marker createRootMarker() {
         Marker rootMarker = MarkerFactory.getMarker(ROOTMARKER);
-        for (String name : names) {
-            rootMarker.remove(MarkerFactory.getMarker(name));
-        }
+        rootMarker.remove(MarkerFactory.getMarker(KATEGORIE));
+        rootMarker.remove(MarkerFactory.getMarker(SCHLUESSEL));
+        rootMarker.remove(MarkerFactory.getMarker(DATENTYP));
         return rootMarker;
-    }
-
-    public static Marker removeMarkers() {
-        return removeMarker(KATEGORIE, SCHLUESSEL, DATENTYP);
     }
 
     public static Marker createMarker(String name, String... values) {
@@ -56,22 +52,21 @@ public class CombinedMarkerFactory {
     }
 
     public static Marker createKategorieMarker(String... values) {
-        Marker rootMarker = removeMarkers();
+        Marker rootMarker = createRootMarker();
         rootMarker.add(createMarker(KATEGORIE, values));
         return rootMarker;
     }
 
     public static Marker createSchluesselMarker(String... values) {
-        Marker rootMarker = removeMarkers();
+        Marker rootMarker = createRootMarker();
         rootMarker.add(createMarker(SCHLUESSEL, values));
         return rootMarker;
     }
 
     public static Marker createDatentypMarker(String... values) {
-        Marker rootMarker = removeMarkers();
+        Marker rootMarker = createRootMarker();
         rootMarker.add(createMarker(DATENTYP, values));
         return rootMarker;
     }
-
-
 }
+
