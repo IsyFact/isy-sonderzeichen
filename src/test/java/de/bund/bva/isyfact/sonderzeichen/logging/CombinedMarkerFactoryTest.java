@@ -4,6 +4,7 @@ import junit.framework.TestCase;
 import org.slf4j.Marker;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.DATENTYP;
@@ -23,8 +24,9 @@ public class CombinedMarkerFactoryTest extends TestCase {
     public void testGetKSDMarker() {
         Marker rootMarker = CombinedMarkerFactory.getKSDMarker(TEST_KATEGORIE, TEST_SCHLUESSEL, TEST_DATENTYP);
         List<String> markerNames = new ArrayList<>();
-        while (rootMarker.iterator().hasNext()) {
-            markerNames.add(rootMarker.iterator().next().getName());
+        Iterator<Marker> iterator = rootMarker.iterator();
+        while (iterator.hasNext()) {
+            markerNames.add(iterator.next().getName());
         }
         assertTrue(markerNames.contains(KATEGORIE));
         assertTrue(markerNames.contains(SCHLUESSEL));
@@ -33,8 +35,7 @@ public class CombinedMarkerFactoryTest extends TestCase {
     }
 
     public void testCreateMarker() {
-        Marker rootMarker = CombinedMarkerFactory.createMarker(TEST_NAME, TEST_VALUE);
-        Marker marker = rootMarker.iterator().next();
+        Marker marker = CombinedMarkerFactory.createMarker(TEST_NAME, TEST_VALUE);
         assertEquals(TEST_NAME, marker.getName());
     }
 
