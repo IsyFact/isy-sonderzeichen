@@ -16,19 +16,21 @@
  */
 package de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.impl;
 
-import de.bund.bva.isyfact.logging.IsyLogger;
-import de.bund.bva.isyfact.logging.IsyLoggerFactory;
 import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.konstanten.TransformationsKonstanten;
 import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.Transformation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The transformer for identical string Latin characters.
- *
  */
 public class IdentischerTransformator extends AbstractTransformator {
 
-    /** Logger. */
-    private static final IsyLogger LOG = IsyLoggerFactory.getLogger(IdentischerTransformator.class);
+    /**
+     * Logger.
+     */
+
+    private static final Logger LOG = LoggerFactory.getLogger(IdentischerTransformator.class);
 
     @Override
     public String transformiere(String zeichenkette, int maximaleLaenge) {
@@ -46,7 +48,7 @@ public class IdentischerTransformator extends AbstractTransformator {
     }
 
     @Override
-    protected IsyLogger getLogger() {
+    protected Logger getLogger() {
         return LOG;
     }
 
