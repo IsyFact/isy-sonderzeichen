@@ -3,6 +3,9 @@ package de.bund.bva.isyfact.sonderzeichen.logging;
 import junit.framework.TestCase;
 import org.slf4j.Marker;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.DATENTYP;
 import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.KATEGORIE;
 import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.SCHLUESSEL;
@@ -19,12 +22,14 @@ public class CombinedMarkerFactoryTest extends TestCase {
 
     public void testGetKSDMarker() {
         Marker rootMarker = CombinedMarkerFactory.getKSDMarker(TEST_KATEGORIE, TEST_SCHLUESSEL, TEST_DATENTYP);
-        Marker kategorieMarker = rootMarker.iterator().next();
-        assertEquals(KATEGORIE, kategorieMarker.getName());
-        Marker schluesselMarker = rootMarker.iterator().next();
-        assertEquals(SCHLUESSEL, schluesselMarker.getName());
-        Marker datentypMarker = rootMarker.iterator().next();
-        assertEquals(DATENTYP, datentypMarker.getName());
+        List<String> markerNames = new ArrayList<>();
+        while (rootMarker.iterator().hasNext()) {
+            markerNames.add(rootMarker.iterator().next().getName());
+        }
+        assertTrue(markerNames.contains(KATEGORIE));
+        assertTrue(markerNames.contains(SCHLUESSEL));
+        assertTrue(markerNames.contains(DATENTYP));
+
     }
 
     public void testCreateMarker() {
