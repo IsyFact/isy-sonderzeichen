@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.bund.bva.isyfact</groupId>
     <artifactId>isy-sonderzeichen</artifactId>
     <packaging>jar</packaging>
-  
+
     <version>${revision}</version>
     <name>IsyFact-Sonderzeichen</name>
     <description>Komponente zur Unterstützung der Verarbeitung von Sonderzeichen.</description>
@@ -36,39 +37,61 @@
 
     <properties>
         <revision>4.0.0-SNAPSHOT</revision>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <maven.compiler.version>3.11.0</maven.compiler.version>
         <maven.javadoc.plugin.version>3.3.2</maven.javadoc.plugin.version>
         <maven.source.plugin.version>3.2.1</maven.source.plugin.version>
-        
+
 
         <maven.jacoco.version>0.8.11</maven.jacoco.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <slf4j.version>2.0.13</slf4j.version>
         <junit.version>4.13.2</junit.version>
-        <!-- Latest available version for isy-logging is 3.0.0 (state 1.3.2024) -->
-        <isy-logging.version>3.0.0</isy-logging.version>
+        <logback-classic.version>1.5.6</logback-classic.version>
+        <logstash-logback-encoder.version>8.0</logstash-logback-encoder.version>
+
     </properties>
 
     <dependencies>
-        <!-- By now, we keep the dependency to isy-logging -->
+
         <dependency>
-            <groupId>de.bund.bva.isyfact</groupId>
-	        <artifactId>isy-logging</artifactId>
-            <version>${isy-logging.version}</version>
-   	    </dependency>
-	    
-	    <!-- Junit is the only(on long term) dependency we -->
-	    <!-- want to keep from original pom -->
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash-logback-encoder.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.5.6</version>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
-    
+
     <build>
         <pluginManagement>
             <plugins>

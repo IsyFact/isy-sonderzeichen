@@ -16,6 +16,15 @@
  */
 package de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.impl;
 
+import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.CharacterUtil;
+import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.konstanten.TransformationsKonstanten;
+import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.Transformation;
+import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.TransformationMetadaten;
+import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.Transformator;
+import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.ZeichenKategorie;
+import org.slf4j.Logger;
+import org.slf4j.Marker;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -29,28 +38,28 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import de.bund.bva.isyfact.logging.IsyLogger;
-import de.bund.bva.isyfact.logging.LogKategorie;
-import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.CharacterUtil;
-import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.konstanten.EreignisSchluessel;
-import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.konstanten.TransformationsKonstanten;
-import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.Transformation;
-import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.TransformationMetadaten;
-import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.Transformator;
-import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.ZeichenKategorie;
+import static de.bund.bva.isyfact.sonderzeichen.dinnorm91379.konstanten.EreignisSchluessel.TRANSFORMATION;
+import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.KATEGORIE_JOURNAL;
+import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.TECHNIKDATEN;
+import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.createSchluesselMarker;
+import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.getKSDMarker;
+
 
 /**
  * Provides common methods for all transformers.
- *
  */
 public abstract class AbstractTransformator implements Transformator {
 
-    /** The regular expression for spaces in the middle of a string. */
+    /**
+     * The regular expression for spaces in the middle of a string.
+     */
     protected static final Pattern REG_EX_LEERZEICHEN = Pattern.compile("[ ]{2,}");
 
-    /** The metacharacters of a regular expression. */
-    private static final char[] REG_EX_META_CHARACTER = { '[', ']', '\\', '^', '$', '.', '|', '?',
-        '*', '+', '-', '(', ')', '<', '>', '{', '}' };
+    /**
+     * The metacharacters of a regular expression.
+     */
+    private static final char[] REG_EX_META_CHARACTER = {'[', ']', '\\', '^', '$', '.', '|', '?',
+            '*', '+', '-', '(', ')', '<', '>', '{', '}'};
 
     /**
      * Transformation table: Character -> Object, where the Object is typically a StringBuilder or a
@@ -63,57 +72,83 @@ public abstract class AbstractTransformator implements Transformator {
      */
     protected final Map<String, String[]> kategorieGueltigeZeichenTabelle = new HashMap<>();
 
-    /** The standard replacement (if no entry is found in the transformation table). */
+    /**
+     * The standard replacement (if no entry is found in the transformation table).
+     */
     protected String standardErsetzung;
+
+    private static String escapeRegexMetaChars(String s) {
+        StringBuilder result = new StringBuilder(s.length());
+        for (char c : s.toCharArray()) {
+            if (isRegexMetaChar(c)) {
+                result.append('\\');
+            }
+            result.append(c);
+        }
+        return result.toString();
+    }
+
+    private static boolean isRegexMetaChar(char c) {
+        for (char metaChar : REG_EX_META_CHARACTER) {
+            if (c == metaChar) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     /**
      * Returns the transformation table of the transformer.
+     *
      * @return the transformation table of the transformer
      */
     protected abstract String getStandardTransformationsTabelle();
 
     /**
      * Returns the category table of the transformer.
+     *
      * @return the category table of the transformer
      */
     protected abstract String getKategorieTabelle();
 
     /**
      * Returns the current logger of the implementing class.
+     *
      * @return the current logger
      */
-    protected abstract IsyLogger getLogger();
+    protected abstract Logger getLogger();
 
     /**
      * Initializes the transformer. Optionally, an additional transformation table can be transferred, which is
      * also loaded and overwrites existing entries.
-     * @param zusaetzlicheTransformationsTabelle
-     *            The path to the additional table, {@code null} if no additional table needs to be loaded
+     *
+     * @param zusaetzlicheTransformationsTabelle The path to the additional table, {@code null} if no additional table needs to be loaded
      */
     public void initialisiere(String zusaetzlicheTransformationsTabelle) {
-
-        getLogger().info(LogKategorie.JOURNAL, EreignisSchluessel.TRANSFORMATION,
-            "Initialisiere Transformator.");
+        Marker marker = getKSDMarker(KATEGORIE_JOURNAL, TRANSFORMATION, TECHNIKDATEN);
+        getLogger().info(getKSDMarker(KATEGORIE_JOURNAL, TRANSFORMATION, TECHNIKDATEN),
+                "Initialisiere Transformator.");
 
         try {
             // Step 1: Load the standard transformation table.
-            getLogger().info(LogKategorie.JOURNAL, EreignisSchluessel.TRANSFORMATION,
-                "Lade Transformationstabelle: {}", getStandardTransformationsTabelle());
+            getLogger().info(getKSDMarker(KATEGORIE_JOURNAL, TRANSFORMATION, TECHNIKDATEN),
+                    "Lade Transformationstabelle: {}", getStandardTransformationsTabelle());
             ladeInTabelle(getClass().getResourceAsStream(getStandardTransformationsTabelle()));
 
             // Step 2: Load additional transformation table, if available
             if (zusaetzlicheTransformationsTabelle != null) {
-                getLogger().info(LogKategorie.JOURNAL, EreignisSchluessel.TRANSFORMATION,
-                    "Lade Transformationstabelle: {}", zusaetzlicheTransformationsTabelle);
+                getLogger().info(getKSDMarker(KATEGORIE_JOURNAL, TRANSFORMATION, TECHNIKDATEN),
+                        "Lade Transformationstabelle: {}", zusaetzlicheTransformationsTabelle);
                 ladeInTabelle(getClass().getResourceAsStream(zusaetzlicheTransformationsTabelle));
             }
 
             // Step 3: load characters into their categories
             ladeInKategorieTabelle(getClass().getResourceAsStream(getKategorieTabelle()));
 
-        } catch (IOException e) {
-            getLogger().error(EreignisSchluessel.TRANSFORMATION,
-                "Fehler beim Laden der Transformationstabelle => Abbruch", e);
+        } catch (Exception e) {
+            Marker schluesselMarker = createSchluesselMarker(TRANSFORMATION);
+            getLogger().error(schluesselMarker,
+                    "Fehler beim Laden der Transformationstabelle => Abbruch", e);
             throw new RuntimeException(e);
         }
 
@@ -166,7 +201,7 @@ public abstract class AbstractTransformator implements Transformator {
             int neuePosition = Math.max(-1, (e.getNeuePosition() - fuehrendeLeerzeichen));
             // Adjust metadata for deleted trailing characters
             if (neuePosition >= filterBuffer.length()) {
-                neuePosition  = -2;
+                neuePosition = -2;
             }
             e.setNeuePosition(neuePosition);
         });
@@ -208,26 +243,6 @@ public abstract class AbstractTransformator implements Transformator {
                 .collect(Collectors.joining("|", "(", ")*"));
     }
 
-    private static String escapeRegexMetaChars(String s) {
-        StringBuilder result = new StringBuilder(s.length());
-        for (char c : s.toCharArray()) {
-            if (isRegexMetaChar(c)) {
-                result.append('\\');
-            }
-            result.append(c);
-        }
-        return result.toString();
-    }
-
-    private static boolean isRegexMetaChar(char c) {
-        for (char metaChar : REG_EX_META_CHARACTER) {
-            if (c == metaChar) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     @Override
     public boolean isGueltigerString(String zeichenkette, String[] kategorieListe) {
         // Determine valid characters of the category
@@ -241,7 +256,7 @@ public abstract class AbstractTransformator implements Transformator {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * Default implementation for transformers that do not use rules.
      */
     @Override
@@ -251,6 +266,7 @@ public abstract class AbstractTransformator implements Transformator {
 
     /**
      * Transforms characters in a string.
+     *
      * @param zeichenkette String to transform
      * @return Transformation object containing the transformed string and the metadata of the transformation
      */
@@ -272,7 +288,7 @@ public abstract class AbstractTransformator implements Transformator {
                 }
                 String altesZeichen = String.valueOf(zeichenkette.charAt(i));
                 metadaten.add(new TransformationMetadaten(
-                    altesZeichen, getCodepoint(altesZeichen), ersetzung, getCodepoint(standardErsetzung), i, i + verschiebung));
+                        altesZeichen, getCodepoint(altesZeichen), ersetzung, getCodepoint(standardErsetzung), i, i + verschiebung));
                 verschiebung += ersetzung.length() - altesZeichen.length();
             } else if (object instanceof StringBuilder) {
                 filtered.append(object);
@@ -280,7 +296,7 @@ public abstract class AbstractTransformator implements Transformator {
                 String altesZeichen = String.valueOf(zeichenkette.charAt(i));
                 if (!altesZeichen.equals(ersetzung)) {
                     metadaten.add(new TransformationMetadaten(
-                        altesZeichen, getCodepoint(altesZeichen), object.toString(), getCodepoint(object.toString()), i, i + verschiebung));
+                            altesZeichen, getCodepoint(altesZeichen), object.toString(), getCodepoint(object.toString()), i, i + verschiebung));
                     verschiebung += ersetzung.length() - altesZeichen.length();
                 }
             } else {
@@ -290,7 +306,7 @@ public abstract class AbstractTransformator implements Transformator {
                 filtered.append(ersetzung);
                 if (!altesZeichen.equals(ersetzung)) {
                     metadaten.add(new TransformationMetadaten(
-                        altesZeichen, getCodepoint(altesZeichen), ersetzung, getCodepoint(ersetzung), i, i + verschiebung));
+                            altesZeichen, getCodepoint(altesZeichen), ersetzung, getCodepoint(ersetzung), i, i + verschiebung));
                 }
                 verschiebung += ersetzung.length() - altesZeichen.length();
                 i += komplexeTransformation.getLaengeLetzteErsetzung() - 1;
@@ -301,18 +317,19 @@ public abstract class AbstractTransformator implements Transformator {
 
     /**
      * Returns unicode codepoints of the characters in a string. Multiple Codepoints are seperated by " + ".
+     *
      * @param text Characters whose codepoints are returned.
      * @return Codepoints
      */
     private String getCodepoint(String text) {
         if (text == null) {
             return "null".codePoints()
-                .mapToObj(e -> String.format("%04X", e))
-                .collect(Collectors.joining(" + "));
+                    .mapToObj(e -> String.format("%04X", e))
+                    .collect(Collectors.joining(" + "));
         }
         return text.codePoints()
-            .mapToObj(e -> String.format("%04X", e))
-            .collect(Collectors.joining(" + "));
+                .mapToObj(e -> String.format("%04X", e))
+                .collect(Collectors.joining(" + "));
     }
 
 
@@ -341,7 +358,7 @@ public abstract class AbstractTransformator implements Transformator {
                 if (linksSplitted.length == 1) {
                     linksHexChar = Integer.parseInt(links, 16);
                     linksChar = (char) linksHexChar;
-                    linksSplittedChar = new char[] { linksChar };
+                    linksSplittedChar = new char[]{linksChar};
                 } else {
                     linksHexChar = Integer.parseInt(linksSplitted[0], 16);
                     linksChar = (char) linksHexChar;
@@ -372,11 +389,11 @@ public abstract class AbstractTransformator implements Transformator {
                 Object tabelleneintrag = transformationsTabelle.get(linksChar);
                 if (tabelleneintrag == null) {
                     transformationsTabelle.put(linksChar,
-                        new StringBuilder(TransformationsKonstanten.ZEICHEN_ENTFERNE));
+                            new StringBuilder(TransformationsKonstanten.ZEICHEN_ENTFERNE));
                 } else {
                     KomplexeTransformation transformation = (KomplexeTransformation) tabelleneintrag;
                     transformation.addErsetzung(Character.toString(linksChar),
-                        TransformationsKonstanten.ZEICHEN_ENTFERNE);
+                            TransformationsKonstanten.ZEICHEN_ENTFERNE);
                 }
                 getLogger().debug("Transformation {} ({}) -> <entferneZeichen> geladen.", linksChar, links);
             } else {
@@ -396,9 +413,8 @@ public abstract class AbstractTransformator implements Transformator {
                         // New creation, if not already available
                         transformation = new KomplexeTransformation(this);
                         transformationsTabelle.put(linksKey, transformation);
-                    } else if (tabelleneintrag instanceof StringBuilder) {
+                    } else if (tabelleneintrag instanceof StringBuilder einfacheErsetzung) {
                         // There is already a simple transformation -> convert to complex transformation
-                        StringBuilder einfacheErsetzung = (StringBuilder) tabelleneintrag;
                         transformation = new KomplexeTransformation(this);
                         transformation.addErsetzung(linksKey.toString(), einfacheErsetzung.toString());
                         transformationsTabelle.put(linksKey, transformation);
@@ -408,7 +424,7 @@ public abstract class AbstractTransformator implements Transformator {
                     }
                     // Extend complex transformation with another replacement
                     transformation
-                        .addErsetzung(new String(linksSplittedChar), rechtsString.toString(), regeln);
+                            .addErsetzung(new String(linksSplittedChar), rechtsString.toString(), regeln);
                     getLogger().debug("Transformation {} ({}) -> {} ({}) geladen.",
                             linksSplittedChar, links, rechtsString, rechts);
                 }
@@ -434,7 +450,7 @@ public abstract class AbstractTransformator implements Transformator {
                 String gueltigerCharacter = (String) o;
 
                 boolean lade = kategorie.equals(ZeichenKategorie.ALLE)
-                    || kategorie.equals(properties.getProperty(gueltigerCharacter));
+                        || kategorie.equals(properties.getProperty(gueltigerCharacter));
 
                 if (lade) {
                     // Parsing the data

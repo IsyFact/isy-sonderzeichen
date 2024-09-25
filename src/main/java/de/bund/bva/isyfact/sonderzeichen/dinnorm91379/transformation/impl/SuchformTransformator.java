@@ -1,9 +1,9 @@
 package de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.impl;
 
-import de.bund.bva.isyfact.logging.IsyLogger;
-import de.bund.bva.isyfact.logging.IsyLoggerFactory;
 import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.konstanten.TransformationsKonstanten;
 import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.Transformation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Transformer that converts normative letters (datatype C) to the basic letters of the Latin alphabet (A-Z).
@@ -11,8 +11,10 @@ import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.Transformat
  */
 public class SuchformTransformator extends AbstractTransformator {
 
-    /** Logger. */
-    private static final IsyLogger LOG = IsyLoggerFactory.getLogger(SuchformTransformator.class);
+    /**
+     * Logger.
+     */
+    private static final Logger LOG = LoggerFactory.getLogger(SuchformTransformator.class);
 
     @Override
     protected String getStandardTransformationsTabelle() {
@@ -20,7 +22,7 @@ public class SuchformTransformator extends AbstractTransformator {
     }
 
     @Override
-    protected IsyLogger getLogger() {
+    protected Logger getLogger() {
         return SuchformTransformator.LOG;
     }
 
