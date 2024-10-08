@@ -10,6 +10,10 @@ on:
       - hotfix/**
       - feature/**
       - bugfix/**
+    paths:
+      - .github/**
+      - src/**
+      - pom.xml
   workflow_dispatch:
 
 jobs:

@@ -25,8 +25,8 @@ Isy-sonderzeichen stellt dazu Werkzeuge zur Verfügung.
 ### Dokumentation
 
 Die Dokumentation des IsyFact Moduls isy-sonderzeichen ist auf den Seiten
-[Konzept](isy-sonderzeichen-doc/modules/ROOT/pages/konzept) und
-[Nutzungsvorgaben](isy-sonderzeichen-doc/modules/ROOT/pages/nutzungsvorgaben)
+[Konzept](docs/modules/ROOT/pages/konzept) und
+[Nutzungsvorgaben](docs/modules/ROOT/pages/nutzungsvorgaben)
 zu finden.
 
 ### Mitwirken
