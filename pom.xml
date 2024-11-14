@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>de.bund.bva.isyfact</groupId>
     <artifactId>isy-sonderzeichen</artifactId>
+    <version>${revision}</version>
     <packaging>jar</packaging>
 
-    <version>${revision}</version>
     <name>IsyFact-Sonderzeichen</name>
     <description>Komponente zur Unterstützung der Verarbeitung von Sonderzeichen.</description>
-
     <url>http://isyfact.de</url>
-
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -34,7 +32,6 @@
         <url>https://github.com/IsyFact/isy-sonderzeichen</url>
     </scm>
 
-
     <properties>
         <revision>4.0.0-SNAPSHOT</revision>
         <maven.compiler.source>17</maven.compiler.source>
@@ -43,7 +40,6 @@
         <maven.javadoc.plugin.version>3.3.2</maven.javadoc.plugin.version>
         <maven.source.plugin.version>3.2.1</maven.source.plugin.version>
         <maven.surefire.version>3.1.2</maven.surefire.version>
-
         <maven.jacoco.version>0.8.11</maven.jacoco.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -51,24 +47,20 @@
         <junit.version>4.13.2</junit.version>
         <logback-classic.version>1.5.6</logback-classic.version>
         <logstash-logback-encoder.version>8.0</logstash-logback-encoder.version>
-
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
-
         <dependency>
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
             <version>${logstash-logback-encoder.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -82,14 +74,12 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -229,18 +219,15 @@
                 </plugins>
             </build>
         </profile>
-
         <profile>
             <id>GPGsigning</id>
             <build>
                 <plugins>
-
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>3.3.1</version>
                     </plugin>
-
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
