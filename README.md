@@ -17,15 +17,13 @@ beim Datenaustausch zwischen diesen Systemen einheitlich durchgereicht und korre
 
 Isy-sonderzeichen stellt dazu Werkzeuge zur Verfügung.
 
-## Features
-
 ## Installation
 
 ### Dokumentation
 
 Die Dokumentation des IsyFact Moduls isy-sonderzeichen ist auf den Seiten
-[Konzept](docs/modules/ROOT/pages/konzept) und
-[Nutzungsvorgaben](docs/modules/ROOT/pages/nutzungsvorgaben)
+[Konzept](https://isyfact.github.io/isy-sonderzeichen-docs/current/konzept/master.html) und
+[Nutzungsvorgaben](https://isyfact.github.io/isy-sonderzeichen-docs/current/nutzungsvorgaben/master.html)
 zu finden.
 
 ### Mitwirken
@@ -39,6 +37,7 @@ der [Lizenzdatei](license/LICENSE).
 
 ### Kontakt
 
-__Vielen Dank für die Verwendung von isy-sonderzeichen!__
+__Vielen Dank für die Verwendung von isy-sonderzeichen!__ <br>
+Bei Fragen oder Anmerkungen zum Modul können Sie uns unter folgender E-Mail-Adresse kontaktieren: [isyfact@bva.bund.de](mailto:isyfact@bva.bund.de)
 
 © 2024 IsyFact
