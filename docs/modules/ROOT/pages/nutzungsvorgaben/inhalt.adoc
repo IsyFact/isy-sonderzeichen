@@ -15,7 +15,8 @@ Unter Linux-Derivaten kann unter anderem mit dem Parameter
 
 `LC_CTYPE = UTF8`
 
-die Encodierung für jeden Benutzer individuell gesetzt werden. Weitere Locale-Parameter und deren Verwendung sind bei https://www.gnu.org/software/gettext/manual/html_node/Locale-Environment-Variables.html[gnu.org] nachzulesen.
+die Encodierung für jeden Benutzer individuell gesetzt werden.
+Weitere Locale-Parameter und deren Verwendung sind bei link:++https://www.gnu.org/software/gettext/manual/html_node/Locale-Environment-Variables.html++[gnu.org] nachzulesen.
 
 [[hibernate]]
 === Hibernate
@@ -188,8 +189,8 @@ Dieser Transformator ermöglicht keine Vorgabe der maximalen Zeichenlänge.
 
 *Transkription Transformator*
 
-Dieser Transformator führt die in xref:nutzungsvorgaben/master.adoc#table-transkription[Tabelle Transkription] dargestellte Transkription durch. Die Transkription ist eine aussprachebasierte
-Darstellung der übergebenen Zeichenkette, die mit dem ASCII-Zeichensatz dargestellt werden kann.
+Dieser Transformator führt die in xref:nutzungsvorgaben/master.adoc#table-transkription[Tabelle Transkription] dargestellte Transkription durch.
+Die Transkription ist eine aussprachebasierte Darstellung der übergebenen Zeichenkette, die mit dem ASCII-Zeichensatz dargestellt werden kann.
 Dieser Transformator ermöglicht keine Vorgabe der maximalen Zeichenlänge.
 
 *Suchform Transformator*
@@ -206,7 +207,7 @@ Wenn Datensätze und Suchanfragen unter Anwendung der Suchform normalisiert werd
 *Legacy Transformator*
 
 Mit dem Legacy Transformator ist es möglich, Texte, welche mit Zeichen der DIN Norm 91379 geschrieben wurden, umzuwandeln, sodass diese von Systemen verarbeitet werden können, welche nur den Zeichensatz String Latin 1.1 beherrschen.
-Die Transformationregeln sind der  xref:nutzungsvorgaben/master.adoc#table-legacy[Tabelle Legacy] zu entnehmen.
+Die Transformationsregeln sind der  xref:nutzungsvorgaben/master.adoc#table-legacy[Tabelle Legacy] zu entnehmen.
 Dieser Transformator ermöglicht keine Vorgabe der maximalen Zeichenlänge.
 Es ist also möglich, dass transformierte Texte nicht mehr vom System verarbeitet werden können, wenn diese nicht mehr die maximale Zeichenlänge einhalten können.
 
@@ -304,7 +305,7 @@ Doppelte Leerzeichen innerhalb der Zeichenkette werden zu einem Leerzeichen umge
 
 Gibt den transformierten String aus.
 
- a|
+a|
 `String zeichenkette`
 
 Die zu transformierende Zeichenkette
@@ -318,7 +319,7 @@ Es wird dabei nicht unterschieden, ob die ursprüngliche Zeichenkettenlänge ber
 
 Gibt den transformierten String aus.
 
- a|
+a|
 `String zeichenkette`
 
 Die zu transformierende Zeichenkette
@@ -335,7 +336,7 @@ Es werden jedoch keine Leerzeichen am Anfang/Ende der übergebenen Zeichenkette 
 
 Gibt den transformierten String aus.
 
- a|
+a|
 `String zeichenkette`
 
 Die zu transformierende Zeichenkette
@@ -351,7 +352,7 @@ Doppelte Leerzeichen innerhalb der Zeichenkette werden zu einem Leerzeichen umge
 
 Gibt ein Objekt vom Typ `Transformation` zurück, welches den transformierten String und die Metadaten der Transformation enthält.
 
- a|
+a|
 `String zeichenkette`
 
 Die zu transformierende Zeichenkette
@@ -365,7 +366,7 @@ Es wird dabei nicht unterschieden, ob die ursprüngliche Zeichenkettenlänge ber
 
 Gibt ein Objekt vom Typ `Transformation` zurück, welches den transformierten String und die Metadaten der Transformation enthält.
 
- a|
+a|
 `String zeichenkette`
 
 Die zu transformierende Zeichenkette
@@ -382,7 +383,7 @@ Es werden jedoch keine Leerzeichen am Anfang/Ende der übergebenen Zeichenkette 
 
 Gibt ein Objekt vom Typ `Transformation` zurück, welches den transformierten String und die Metadaten der Transformation enthält.
 
- a|
+a|
 `String zeichenkette`
 
 Die zu transformierende Zeichenkette
@@ -392,7 +393,7 @@ a|
 
 Gibt den regulären Ausdruck zurück, der alle gültigen Zeichenketten beschreibt, deren Zeichen in der jeweiligen Zeichenkategorie aufgeführt sind.
 
- a|
+a|
 `String[] kategorieListe`
 
 Eine Liste mit den Zeichenkategorien.
@@ -405,7 +406,7 @@ a|
 
 Gibt alle gültigen Zeichen des Transformators zurück.
 
- a|
+a|
 `String kategorie`
 
 Eine Zeichenkategorie aus `LETTER, NUMBER, PUNCTUATION, SEPARATOR, SYMBOL, OTHER`.
