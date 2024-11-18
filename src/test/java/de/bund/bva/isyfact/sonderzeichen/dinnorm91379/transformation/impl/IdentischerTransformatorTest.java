@@ -16,21 +16,22 @@
  */
 package de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.impl;
 
-import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.TestData;
-import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.ZeichenKategorie;
-import org.junit.Before;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.TestData;
+import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.ZeichenKategorie;
 
 /**
  * Tests the IdentischerTransformator.
@@ -100,7 +101,7 @@ public class IdentischerTransformatorTest {
 
         this.transformator.initialisiere(null);
 
-        String regex = this.transformator.getRegulaererAusdruck(new String[]{ZeichenKategorie.ALLE});
+        String regex = this.transformator.getRegulaererAusdruck(new String[] {ZeichenKategorie.ALLE});
 
         Pattern pattern = Pattern.compile(regex);
 
@@ -135,17 +136,17 @@ public class IdentischerTransformatorTest {
         String testpatternUngueltig_3 = "\u006C\u0302uivir%$";
 
         assertTrue(this.transformator.isGueltigerString(testpatternGueltig_1,
-                new String[]{ZeichenKategorie.ALLE}));
+            new String[] {ZeichenKategorie.ALLE}));
         assertTrue(this.transformator.isGueltigerString(testpatternGueltig_2,
-                new String[]{ZeichenKategorie.ALLE}));
+            new String[] {ZeichenKategorie.ALLE}));
         assertTrue(this.transformator.isGueltigerString(testpatternGueltig_3,
-                new String[]{ZeichenKategorie.ALLE}));
+            new String[] {ZeichenKategorie.ALLE}));
         assertFalse(this.transformator.isGueltigerString(testpatternUngueltig_1,
-                new String[]{ZeichenKategorie.ALLE}));
+            new String[] {ZeichenKategorie.ALLE}));
         assertFalse(this.transformator.isGueltigerString(testpatternUngueltig_2,
-                new String[]{ZeichenKategorie.ALLE}));
+            new String[] {ZeichenKategorie.ALLE}));
         assertFalse(this.transformator.isGueltigerString(testpatternUngueltig_3,
-                new String[]{ZeichenKategorie.LETTER}));
+            new String[] {ZeichenKategorie.LETTER}));
     }
 
     @Test
