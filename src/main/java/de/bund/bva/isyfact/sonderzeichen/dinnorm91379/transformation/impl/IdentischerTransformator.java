@@ -16,10 +16,11 @@
  */
 package de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.impl;
 
-import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.konstanten.TransformationsKonstanten;
-import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.Transformation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.konstanten.TransformationsKonstanten;
+import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.Transformation;
 
 /**
  * The transformer for identical string Latin characters.

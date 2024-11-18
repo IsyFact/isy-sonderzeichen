@@ -24,7 +24,7 @@ public class TransformationMetadaten {
     private int neuePosition;
 
     public TransformationMetadaten(String altesZeichen, String alteCodepoints, String neuesZeichen,
-        String neueCodepoints, int altePosition, int neuePosition) {
+                                   String neueCodepoints, int altePosition, int neuePosition) {
         this.altesZeichen = altesZeichen;
         this.alteCodepoints = alteCodepoints;
         this.neuesZeichen = neuesZeichen;

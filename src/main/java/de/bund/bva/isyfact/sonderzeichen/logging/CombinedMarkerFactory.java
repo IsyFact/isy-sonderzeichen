@@ -1,9 +1,9 @@
 package de.bund.bva.isyfact.sonderzeichen.logging;
 
+import java.util.Arrays;
+
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
-
-import java.util.Arrays;
 
 
 /**
@@ -27,6 +27,7 @@ public class CombinedMarkerFactory {
      * @param kategorie  The value for the Kategorie.
      * @param schluessel The value for the Schluessel.
      * @param datentyp   The value for the Datentyp.
+     *
      * @return The root marker.
      */
     public static Marker getKSDMarker(final String kategorie, final String schluessel, final String datentyp) {

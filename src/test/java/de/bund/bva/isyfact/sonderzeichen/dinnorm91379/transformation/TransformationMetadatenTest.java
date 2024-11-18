@@ -39,16 +39,16 @@ public class TransformationMetadatenTest {
     public static final String STRING_ENTFERNE_MEHRERE_LEERZEICHEN_EXPECTED = "Z R R";
 
     /** String that will be shortened by the LegacyTransformator. */
-    public static final String STRING_LEGACY_KUERZEN ="R̥̄C̨̆";
+    public static final String STRING_LEGACY_KUERZEN = "R̥̄C̨̆";
 
     /** Expected result after use of the LegacyTransformator on the prior string. */
-    public static final String STRING_LEGACY_KUERZEN_EXPECTED ="RC";
+    public static final String STRING_LEGACY_KUERZEN_EXPECTED = "RC";
 
     /** String that will be extended by the LegacyTransformator. */
-    public static final String STRING_LEGACY_ERWEITERN ="™‰";
+    public static final String STRING_LEGACY_ERWEITERN = "™‰";
 
     /** Expected result after use of the LegacyTransformator on the prior string. */
-    public static final String STRING_LEGACY_ERWEITERN_EXPECTED ="(TM)permil";
+    public static final String STRING_LEGACY_ERWEITERN_EXPECTED = "(TM)permil";
 
 
     @Test

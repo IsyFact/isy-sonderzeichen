@@ -1,15 +1,16 @@
 package de.bund.bva.isyfact.sonderzeichen.logging;
 
-import junit.framework.TestCase;
-import org.slf4j.Marker;
+import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.DATENTYP;
+import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.KATEGORIE;
+import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.SCHLUESSEL;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.DATENTYP;
-import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.KATEGORIE;
-import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.SCHLUESSEL;
+import org.slf4j.Marker;
+
+import junit.framework.TestCase;
 
 public class CombinedMarkerFactoryTest extends TestCase {
     static String TEST_KATEGORIE = "TestKategorie";

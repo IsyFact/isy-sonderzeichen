@@ -11,10 +11,9 @@ public class CharacterUtil {
      * Checks if a given string contains only the characters present in the provided character set. A "character" is a
      * string containing a single Unicode character, which may consist of multiple primitive {@code char} elements.
      *
-     * @param fullString
-     *         string to check (must not be null)
-     * @param validCharacters
-     *         set of characters that are allowed in the string (must not be null)
+     * @param fullString      string to check (must not be null)
+     * @param validCharacters set of characters that are allowed in the string (must not be null)
+     *
      * @return {@code true} if the string is valid, otherwise {@code false}
      */
     public static boolean containsOnlyCharsFromSet(String fullString, Set<String> validCharacters) {
@@ -24,10 +23,10 @@ public class CharacterUtil {
         // Create a map grouping the characters by their length.
         // This is necessary to check characters by descending length and easily skip those whose length would exceed the full string.
         Map<Integer, Set<String>> validCharsByLength = validCharacters.stream()
-                .collect(Collectors.groupingBy(String::length, Collectors.toSet()));
+            .collect(Collectors.groupingBy(String::length, Collectors.toSet()));
         // Get max length of a character or 0, if the set of valid characters is empty
         int maximumValidCharLength = validCharsByLength.keySet().stream()
-                .mapToInt(Integer::intValue).max().orElse(0);
+            .mapToInt(Integer::intValue).max().orElse(0);
 
         // Iterate through string
         for (int charIndexInFullString = 0; charIndexInFullString < fullString.length(); charIndexInFullString++) {
@@ -71,7 +70,7 @@ public class CharacterUtil {
         // check chars the strings against the valid char
         for (int gueltigesZeichenIteration = 0; gueltigesZeichenIteration < validChar.length(); gueltigesZeichenIteration++) {
             if (validChar.charAt(gueltigesZeichenIteration) !=
-                    fullString.charAt(fullStringIndex + gueltigesZeichenIteration)) {
+                fullString.charAt(fullStringIndex + gueltigesZeichenIteration)) {
                 // if the primitive chars don't match, return false
                 return false;
             }
@@ -90,8 +89,8 @@ public class CharacterUtil {
      *     <li>{@code "0043+0304"} will be converted to {@code ['\u0043','\u0304']} (latin capital letter C, followed by the combining grave accent)</li>
      * </ul>
      *
-     * @param codePoints
-     *         hexadecimal Unicode code points separated with "+"
+     * @param codePoints hexadecimal Unicode code points separated with "+"
+     *
      * @return char array of the actual characters represented by the code points
      */
     public static char[] parseString(String codePoints) {

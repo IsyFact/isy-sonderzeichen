@@ -1,8 +1,9 @@
 package de.bund.bva.isyfact.sonderzeichen.dinnorm91379.validierung;
 
-import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.CharacterUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static de.bund.bva.isyfact.sonderzeichen.dinnorm91379.konstanten.EreignisSchluessel.VALIDIERUNG;
+import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.KATEGORIE_JOURNAL;
+import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.TECHNIKDATEN;
+import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.getKSDMarker;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,10 +13,10 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import static de.bund.bva.isyfact.sonderzeichen.dinnorm91379.konstanten.EreignisSchluessel.VALIDIERUNG;
-import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.KATEGORIE_JOURNAL;
-import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.TECHNIKDATEN;
-import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.getKSDMarker;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.CharacterUtil;
 
 /**
  * Provides methods for validating strings against DIN Norm 91379 data types.
@@ -25,7 +26,6 @@ public class ZeichenValidator {
     /**
      * Logger.
      */
-
     private static final Logger logger = LoggerFactory.getLogger(ZeichenValidator.class);
 
     /**
@@ -49,7 +49,7 @@ public class ZeichenValidator {
             }
         } catch (IOException e) {
             logger.error(getKSDMarker(KATEGORIE_JOURNAL, VALIDIERUNG, TECHNIKDATEN),
-                    "Fehler beim Laden der Kategorietabelle => Abbruch");
+                "Fehler beim Laden der Kategorietabelle => Abbruch");
             throw new RuntimeException(e);
         }
     }
@@ -59,6 +59,7 @@ public class ZeichenValidator {
      *
      * @param zeichenkette the string to check
      * @param datentyp     data type as defined by DIN Norm 91379
+     *
      * @return {@code true} if the string only contains characters from the datatype, otherwise {@code false}
      */
     public boolean isGueltigerString(String zeichenkette, Datentyp datentyp) {
