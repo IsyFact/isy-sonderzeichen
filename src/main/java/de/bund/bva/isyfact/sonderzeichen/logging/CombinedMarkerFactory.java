@@ -5,7 +5,6 @@ import java.util.Arrays;
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
 
-
 /**
  * Factory for the construction of combinations of logging markers. Hierarchies of named markers may be built.
  */
@@ -22,7 +21,7 @@ public class CombinedMarkerFactory {
     private final static String ROOTMARKER = "rootmarker";
 
     /**
-     * Return a root marker containing markes for Kategorie, Schluessel and Datentyp.
+     * Return a root marker containing markers for Kategorie, Schluessel and Datentyp.
      *
      * @param kategorie  The value for the Kategorie.
      * @param schluessel The value for the Schluessel.
@@ -38,6 +37,11 @@ public class CombinedMarkerFactory {
         return rootMarker;
     }
 
+    /**
+     * Returns a root marker.
+     *
+     * @return Root marker.
+     */
     private static Marker createRootMarker() {
         Marker rootMarker = MarkerFactory.getMarker(ROOTMARKER);
         rootMarker.remove(MarkerFactory.getMarker(KATEGORIE));
@@ -46,28 +50,49 @@ public class CombinedMarkerFactory {
         return rootMarker;
     }
 
+    /**
+     * Creates a marker along with submarkers.
+     *
+     * @param name Name of the main marker.
+     * @param values Names of all submarkers.
+     * @return The marker containing its submarkers.
+     */
     public static Marker createMarker(String name, String... values) {
         Marker marker = MarkerFactory.getMarker(name);
         Arrays.stream(values).forEach(value -> marker.add(MarkerFactory.getMarker(value)));
         return marker;
     }
 
+    /**
+     * Returns a category marker along with submarkers.
+     *
+     * @return The category marker containing its submarkers.
+     */
     public static Marker createKategorieMarker(String... values) {
         Marker rootMarker = createRootMarker();
         rootMarker.add(createMarker(KATEGORIE, values));
         return rootMarker;
     }
 
+    /**
+     * Returns a key marker along with submarkers.
+     *
+     * @return The key marker containing its submarkers.
+     */
     public static Marker createSchluesselMarker(String... values) {
         Marker rootMarker = createRootMarker();
         rootMarker.add(createMarker(SCHLUESSEL, values));
         return rootMarker;
     }
 
+    /**
+     * Returns a datatype marker along with submarkers.
+     *
+     * @return The datatype marker containing its submarkers.
+     */
     public static Marker createDatentypMarker(String... values) {
         Marker rootMarker = createRootMarker();
         rootMarker.add(createMarker(DATENTYP, values));
         return rootMarker;
     }
 }
-
