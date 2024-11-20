@@ -3,6 +3,8 @@
   * isy-sonderzeichen in eigenständiges Repository verschoben
   * Spring Dependency entfernt
 - `IFS-3851`: Hinzufügen von Antora-Komponente für Dokumentation
+- `IFS-4357`: Nacharbeiten nach Entkopplung von isy-sonderzeichen
+  * Refactoring von Logging Klassen und Tests
 
 # 3.0.0
 - `IFS-1504`: Transformator für die normative Abbildung lateinischer Buchstaben auf Grundbuchstaben (Suchform) hinzugefügt
