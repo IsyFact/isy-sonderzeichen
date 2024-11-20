@@ -20,7 +20,6 @@ import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.impl.Transk
  */
 @RunWith(Parameterized.class)
 public class TranskriptionTransformatorTest {
-
     /**
      * Some text with no only latin letters.
      */
@@ -71,7 +70,6 @@ public class TranskriptionTransformatorTest {
     public TranskriptionTransformatorTest(String testData, String expected) {
         this.testData = testData;
         this.expected = expected;
-
     }
 
     /**
