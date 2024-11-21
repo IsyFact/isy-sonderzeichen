@@ -26,7 +26,7 @@ public class ZeichenValidator {
     /**
      * Logger.
      */
-    private static final Logger logger = LoggerFactory.getLogger(ZeichenValidator.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ZeichenValidator.class);
 
     /**
      * A map that sorts valid characters by their data type.
@@ -37,7 +37,7 @@ public class ZeichenValidator {
      * Creates a new validator. Initializes the {@link #validCharactersByDatentyp} map.
      */
     public ZeichenValidator() {
-        logger.info(getKSDMarker(KATEGORIE_JOURNAL, VALIDIERUNG, TECHNIKDATEN), "Erstelle ZeichenValidator.");
+        LOGGER.info(getKSDMarker(KATEGORIE_JOURNAL, VALIDIERUNG, TECHNIKDATEN), "Erstelle ZeichenValidator.");
 
         try {
 
@@ -48,7 +48,7 @@ public class ZeichenValidator {
                 }
             }
         } catch (IOException e) {
-            logger.error(getKSDMarker(KATEGORIE_JOURNAL, VALIDIERUNG, TECHNIKDATEN),
+            LOGGER.error(getKSDMarker(KATEGORIE_JOURNAL, VALIDIERUNG, TECHNIKDATEN),
                 "Fehler beim Laden der Kategorietabelle => Abbruch");
             throw new RuntimeException(e);
         }
@@ -68,7 +68,7 @@ public class ZeichenValidator {
     }
 
     private void addCharactersFromZeichengruppeToDatentypMap(Datentyp datentyp, Zeichengruppe zeichengruppe) throws IOException {
-        logger.debug("Lade Kategorietabelle für Zeichengruppe: {}", zeichengruppe);
+        LOGGER.debug("Lade Kategorietabelle für Zeichengruppe: {}", zeichengruppe);
         try (InputStream inputStream = getClass().getResourceAsStream(zeichengruppe.getPfad())) {
             // Load file
             Properties properties = new Properties();
@@ -88,7 +88,7 @@ public class ZeichenValidator {
             if (zeichen != null) {
                 String newString = new String(zeichen);
                 zeichenketteSet.add(newString);
-                logger.debug("Zeichen: {} zu Datentyp {} zugeordnet.", newString, datentyp);
+                LOGGER.debug("Zeichen: {} zu Datentyp {} zugeordnet.", newString, datentyp);
             }
         }
 

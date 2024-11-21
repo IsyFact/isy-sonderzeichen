@@ -10,15 +10,15 @@ import org.slf4j.MarkerFactory;
  */
 public class CombinedMarkerFactory {
 
-    public final static String KATEGORIE_JOURNAL = "JOURNAL";
-    public final static String KATEGORIE_METRIK = "METRIK";
-    public final static String KATEGORIE_PROFILING = "PROFILING";
-    public final static String KATEGORIE_SICHERHEIT = "SICHERHEIT";
-    public final static String TECHNIKDATEN = "Technikdaten";
-    public final static String KATEGORIE = "kategorie";
-    public final static String SCHLUESSEL = "schluessel";
-    public final static String DATENTYP = "datentyp";
-    private final static String ROOTMARKER = "rootmarker";
+    public static final String KATEGORIE_JOURNAL = "JOURNAL";
+    public static final String KATEGORIE_METRIK = "METRIK";
+    public static final String KATEGORIE_PROFILING = "PROFILING";
+    public static final String KATEGORIE_SICHERHEIT = "SICHERHEIT";
+    public static final String TECHNIKDATEN = "Technikdaten";
+    public static final String KATEGORIE = "kategorie";
+    public static final String SCHLUESSEL = "schluessel";
+    public static final String DATENTYP = "datentyp";
+    private static final String ROOTMARKER = "rootmarker";
 
     /**
      * Return a root marker containing markers for Kategorie, Schluessel and Datentyp.
@@ -53,8 +53,9 @@ public class CombinedMarkerFactory {
     /**
      * Creates a marker along with submarkers.
      *
-     * @param name Name of the main marker.
+     * @param name   Name of the main marker.
      * @param values Names of all submarkers.
+     *
      * @return The marker containing its submarkers.
      */
     public static Marker createMarker(String name, String... values) {
