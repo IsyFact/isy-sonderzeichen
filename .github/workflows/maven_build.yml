@@ -32,19 +32,19 @@ jobs:
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-#  DeployGitHubPackages:
-#    if: github.event_name == 'push' && (github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/heads/release/'))
-#    needs: [MavenBuild, Version]
-#    uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_deploy_template.yml@v1.5.0
-#    with:
-#      version: ${{ needs.Version.outputs.next-version }}
-#      jdk-version: 21
-#      maven-opts: '-DaltDeploymentRepository=github::default::https://maven.pkg.github.com/IsyFact/isy-sonderzeichen'
-#      deploy-server-id: github
-#      sbom: ${{ startsWith(github.ref, 'refs/heads/release/') }}
-#      sign: true
-#    secrets:
-#      GPG_PRIVATE_KEY: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
-#      GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
-#      DEPLOY_SERVER_USER_NAME: ${{ github.actor }}
-#      DEPLOY_SERVER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  DeploySnapshotRcVersion:
+    if: github.event_name == 'push'
+    needs: [ MavenBuild, Version ]
+    uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_deploy_template.yml@v1.6.0
+    with:
+      version: ${{ needs.Version.outputs.next-version }}
+      jdk-version: 21
+      maven-opts: '-DaltDeploymentRepository=ossrh::default::https://oss.sonatype.org/content/repositories/snapshots/'
+      deploy-server-id: ossrh
+      sbom: ${{ startsWith(github.ref, 'refs/heads/release/') }}
+      sign: true
+    secrets:
+      GPG_PRIVATE_KEY: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+      GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+      DEPLOY_SERVER_USER_NAME: ${{ secrets.MAVEN_CENTRAL_USER_NAME }}
+      DEPLOY_SERVER_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
