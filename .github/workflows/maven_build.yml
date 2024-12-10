@@ -33,7 +33,6 @@ jobs:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   DeploySnapshotRcVersion:
-    if: github.event_name == 'push'
     needs: [ MavenBuild, Version ]
     uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_deploy_template.yml@v1.6.0
     with:
