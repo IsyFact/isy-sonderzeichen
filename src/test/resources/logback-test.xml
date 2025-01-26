@@ -1,0 +1,47 @@
+<configuration scan="true" scanPeriod="1 minutes" debug="true">
+
+    <contextName>testserver_testsystem</contextName>
+
+
+    <include resource="resources/logback/appender.xml"/>
+
+    <appender name="JSON_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+        </encoder>
+    </appender>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[P: %-5p] [T: %t] [L: %c] - [M: %m] %n</pattern>
+        </encoder>
+    </appender>
+
+    <turboFilter class="ch.qos.logback.classic.turbo.MarkerFilter">
+        <Marker>JOURNAL</Marker>
+        <OnMatch>ACCEPT</OnMatch>
+        <OnMismatch>DENY</OnMismatch>
+    </turboFilter>
+
+    <appender name="JOURNAL" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>JOURNAL: [P: %-5p] [T: %t] [L: %c] - [M: %m] %n</pattern>
+        </encoder>
+
+    </appender>
+
+    <appender name="TEST" class="de.bund.bva.isyfact.testutil.TestAppender">
+        <encoder>
+            <pattern>[P: %-5p] [T: %t] [L: %c] - [M: %m] %n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="de.bund.bva.isyfact.sonderzeichen" level="INFO" additivity="true">
+        <appender-ref ref="TEST"/>
+        <appender-ref ref="JOURNAL"/>
+    </logger>
+
+    <root level="ERROR">
+        <appender-ref ref="JSON_CONSOLE"/>
+    </root>
+
+</configuration>

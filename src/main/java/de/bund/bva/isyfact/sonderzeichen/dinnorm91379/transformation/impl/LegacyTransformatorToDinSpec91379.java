@@ -1,7 +1,8 @@
 package de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.impl;
 
-import de.bund.bva.isyfact.logging.IsyLogger;
-import de.bund.bva.isyfact.logging.IsyLoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.konstanten.TransformationsKonstanten;
 import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.Transformation;
 
@@ -11,8 +12,10 @@ import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.Transformat
  */
 public class LegacyTransformatorToDinSpec91379 extends AbstractTransformator {
 
-    /** Logger. */
-    private static final IsyLogger LOG = IsyLoggerFactory.getLogger(LegacyTransformatorToDinSpec91379.class);
+    /**
+     * Logger.
+     */
+    private static final Logger LOG = LoggerFactory.getLogger(LegacyTransformatorToDinSpec91379.class);
 
     @Override
     protected String getStandardTransformationsTabelle() {
@@ -25,7 +28,7 @@ public class LegacyTransformatorToDinSpec91379 extends AbstractTransformator {
     }
 
     @Override
-    protected IsyLogger getLogger() {
+    protected Logger getLogger() {
         return LOG;
     }
 

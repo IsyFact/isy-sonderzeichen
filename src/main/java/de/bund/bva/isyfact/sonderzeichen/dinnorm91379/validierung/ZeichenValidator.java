@@ -1,5 +1,10 @@
 package de.bund.bva.isyfact.sonderzeichen.dinnorm91379.validierung;
 
+import static de.bund.bva.isyfact.sonderzeichen.dinnorm91379.konstanten.EreignisSchluessel.VALIDIERUNG;
+import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.KATEGORIE_JOURNAL;
+import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.TECHNIKDATEN;
+import static de.bund.bva.isyfact.sonderzeichen.logging.CombinedMarkerFactory.getKSDMarker;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -8,30 +13,34 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import de.bund.bva.isyfact.logging.IsyLogger;
-import de.bund.bva.isyfact.logging.IsyLoggerFactory;
-import de.bund.bva.isyfact.logging.LogKategorie;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.CharacterUtil;
-import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.konstanten.EreignisSchluessel;
 
 /**
  * Provides methods for validating strings against DIN Norm 91379 data types.
  */
 public class ZeichenValidator {
 
-    /** Logger. */
-    private static final IsyLogger LOG = IsyLoggerFactory.getLogger(ZeichenValidator.class);
+    /**
+     * Logger.
+     */
+    private static final Logger LOGGER = LoggerFactory.getLogger(ZeichenValidator.class);
 
-    /** A map that sorts valid characters by their data type. */
+    /**
+     * A map that sorts valid characters by their data type.
+     */
     private final Map<Datentyp, Set<String>> validCharactersByDatentyp = new HashMap<>();
 
     /**
      * Creates a new validator. Initializes the {@link #validCharactersByDatentyp} map.
      */
     public ZeichenValidator() {
-        LOG.info(LogKategorie.JOURNAL, EreignisSchluessel.VALIDIERUNG, "Erstelle ZeichenValidator.");
+        LOGGER.info(getKSDMarker(KATEGORIE_JOURNAL, VALIDIERUNG, TECHNIKDATEN), "Erstelle ZeichenValidator.");
 
         try {
+
             for (Datentyp datentyp : Datentyp.values()) {
                 // add all character groups to the map for its data type
                 for (Zeichengruppe zeichengruppe : datentyp.getZeichengruppen()) {
@@ -39,7 +48,8 @@ public class ZeichenValidator {
                 }
             }
         } catch (IOException e) {
-            LOG.error(EreignisSchluessel.VALIDIERUNG, "Fehler beim Laden der Kategorietabelle => Abbruch", e);
+            LOGGER.error(getKSDMarker(KATEGORIE_JOURNAL, VALIDIERUNG, TECHNIKDATEN),
+                "Fehler beim Laden der Kategorietabelle => Abbruch");
             throw new RuntimeException(e);
         }
     }
@@ -47,10 +57,9 @@ public class ZeichenValidator {
     /**
      * Check if the given string contains only characters from the specified data type.
      *
-     * @param zeichenkette
-     *         the string to check
-     * @param datentyp
-     *         data type as defined by DIN Norm 91379
+     * @param zeichenkette the string to check
+     * @param datentyp     data type as defined by DIN Norm 91379
+     *
      * @return {@code true} if the string only contains characters from the datatype, otherwise {@code false}
      */
     public boolean isGueltigerString(String zeichenkette, Datentyp datentyp) {
@@ -59,8 +68,7 @@ public class ZeichenValidator {
     }
 
     private void addCharactersFromZeichengruppeToDatentypMap(Datentyp datentyp, Zeichengruppe zeichengruppe) throws IOException {
-        LOG.debug("Lade Kategorietabelle für Zeichengruppe: {}", zeichengruppe);
-
+        LOGGER.debug("Lade Kategorietabelle für Zeichengruppe: {}", zeichengruppe);
         try (InputStream inputStream = getClass().getResourceAsStream(zeichengruppe.getPfad())) {
             // Load file
             Properties properties = new Properties();
@@ -80,8 +88,7 @@ public class ZeichenValidator {
             if (zeichen != null) {
                 String newString = new String(zeichen);
                 zeichenketteSet.add(newString);
-
-                LOG.debug("Zeichen: {} zu Datentyp {} zugeordnet.", newString, datentyp);
+                LOGGER.debug("Zeichen: {} zu Datentyp {} zugeordnet.", newString, datentyp);
             }
         }
 

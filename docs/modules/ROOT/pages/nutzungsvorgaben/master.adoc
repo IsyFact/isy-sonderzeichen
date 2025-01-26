@@ -1,0 +1,9 @@
+= Nutzungsvorgaben isy-sonderzeichen
+
+include::documentation-guide::partial$licence.adoc[]
+
+include::thisdoc.adoc[tags=inhalt]
+
+include::inhalt.adoc[tags=inhalt]
+
+include::anhaenge.adoc[leveloffset=1]

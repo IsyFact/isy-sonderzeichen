@@ -19,9 +19,9 @@ public class CharacterUtilTest {
     @Test
     public void testParseString() {
         assertNull(CharacterUtil.parseString(""));
-        assertArrayEquals(new char[]{ '\u0042' }, CharacterUtil.parseString("0042"));
-        assertArrayEquals(new char[]{ '\u005A', '\u0300' }, CharacterUtil.parseString("005A+0300"));
-        assertArrayEquals(new char[]{ '\u0063', '\u0328', '\u0306' }, CharacterUtil.parseString("0063+0328+0306"));
+        assertArrayEquals(new char[] {'\u0042'}, CharacterUtil.parseString("0042"));
+        assertArrayEquals(new char[] {'\u005A', '\u0300'}, CharacterUtil.parseString("005A+0300"));
+        assertArrayEquals(new char[] {'\u0063', '\u0328', '\u0306'}, CharacterUtil.parseString("0063+0328+0306"));
     }
 
     @Test(expected = NullPointerException.class)

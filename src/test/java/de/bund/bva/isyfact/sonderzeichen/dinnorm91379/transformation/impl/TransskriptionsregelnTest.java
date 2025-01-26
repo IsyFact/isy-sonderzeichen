@@ -27,7 +27,6 @@ import org.junit.Test;
 
 /**
  * Checks the function of the transcription rules.
- *
  */
 public class TransskriptionsregelnTest {
 
@@ -36,7 +35,7 @@ public class TransskriptionsregelnTest {
     private Set<Character> pruefzeichen;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         trennzeichen = new HashSet<>();
         trennzeichen.add(' ');
         trennzeichen.add('-');
@@ -96,22 +95,23 @@ public class TransskriptionsregelnTest {
     }
 
     @Test
-    public void testWortEndeNull(){
+    public void testWortEndeNull() {
         assertFalse(Transskriptionsregeln.isWortende(null, 1, 2, trennzeichen));
 
     }
 
     @Test
-    public void testWortMitteNull(){
+    public void testWortMitteNull() {
         assertFalse(Transskriptionsregeln.isWortmitte(null, 1, 2, trennzeichen));
 
     }
 
     @Test
-    public void testWortAnfangNull(){
-        assertFalse(Transskriptionsregeln.isWortanfang(null,0,trennzeichen));
+    public void testWortAnfangNull() {
+        assertFalse(Transskriptionsregeln.isWortanfang(null, 0, trennzeichen));
 
     }
+
     @Test
     public void testVorZeichenNull() {
         assertFalse(Transskriptionsregeln.isVorZeichen(null, 4, 2, pruefzeichen));
