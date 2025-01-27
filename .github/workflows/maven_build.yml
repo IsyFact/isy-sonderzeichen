@@ -43,6 +43,7 @@ jobs:
       deploy-server-id: ossrh
       sbom: ${{ startsWith(github.ref, 'refs/heads/release/') }}
       sign: true
+      environment: 'Release'
     secrets:
       GPG_PRIVATE_KEY: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
       GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
