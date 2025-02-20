@@ -10,6 +10,7 @@ Keine
 - `IFS-3851`: Hinzufügen von Antora-Komponente für Dokumentation
 - `IFS-4357`: Nacharbeiten nach Entkopplung von isy-sonderzeichen
   * Refactoring von Logging Klassen und Tests
+- `IFS-4203`: Link Checker: Fehlerhafte Links bereinigen
 
 ### Bug Fixes
 Keine
