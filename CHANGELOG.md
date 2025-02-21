@@ -5,6 +5,7 @@
 - `IFS-3851`: Hinzufügen von Antora-Komponente für Dokumentation
 - `IFS-4357`: Nacharbeiten nach Entkopplung von isy-sonderzeichen
   * Refactoring von Logging Klassen und Tests
+- `IFS-4203`: Link Checker: Fehlerhafte Links bereinigen
 
 # 3.0.0
 - `IFS-1504`: Transformator für die normative Abbildung lateinischer Buchstaben auf Grundbuchstaben (Suchform) hinzugefügt
