@@ -20,7 +20,6 @@ import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.impl.Transk
  */
 @RunWith(Parameterized.class)
 public class TranskriptionTransformatorTest {
-
     /**
      * Some text with no only latin letters.
      */
@@ -63,36 +62,37 @@ public class TranskriptionTransformatorTest {
     private final String expected;
 
     /**
+     * Constructor which sets {@link #testData} and {@link #expected}.
+     *
+     * @param testData current test data
+     * @param expected current expected result
+     */
+    public TranskriptionTransformatorTest(String testData, String expected) {
+        this.testData = testData;
+        this.expected = expected;
+    }
+
+    /**
      * Composes the different test data to a single collection used by JUnit.
+     *
      * @return collection of the test data.
      */
     @Parameterized.Parameters(name = "{index}: testData={0}\nexpected={1}")
     public static Collection<Object[]> data() {
         List<Object[]> testData = new ArrayList<>();
         for (int i = 0; i < RANDOM_TESTDATA.length; i++) {
-            testData.add(new String[]{RANDOM_TESTDATA[i], RANDOM_TESTDATA_EXPECTED[i]});
+            testData.add(new String[] {RANDOM_TESTDATA[i], RANDOM_TESTDATA_EXPECTED[i]});
         }
 
-        testData.add(new String[]{LOREM_IPSUM, LORREM_IPSUM_EXPECTED});
+        testData.add(new String[] {LOREM_IPSUM, LORREM_IPSUM_EXPECTED});
 
         for (int i = 0; i < UMLAUTE.length; i++) {
-            testData.add(new String[]{UMLAUTE[i], UMLAUTE_EXPECTED[i]});
+            testData.add(new String[] {UMLAUTE[i], UMLAUTE_EXPECTED[i]});
         }
 
-        testData.add(new String[]{UNBEKANNT, UNBEKANNT_EXPECTED});
+        testData.add(new String[] {UNBEKANNT, UNBEKANNT_EXPECTED});
 
         return testData;
-    }
-
-    /**
-     * Constructor which sets {@link #testData} and {@link #expected}.
-     * @param testData current test data
-     * @param expected current expected result
-     */
-    public TranskriptionTransformatorTest(String testData, String expected){
-        this.testData = testData;
-        this.expected = expected;
-
     }
 
     /**

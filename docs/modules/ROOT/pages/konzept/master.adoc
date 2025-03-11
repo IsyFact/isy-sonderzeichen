@@ -1,0 +1,5 @@
+= Konzept isy-sonderzeichen
+
+include::documentation-guide::partial$licence.adoc[]
+
+include::inhalt.adoc[tags=inhalt]

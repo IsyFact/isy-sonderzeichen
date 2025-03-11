@@ -57,6 +57,6 @@ public final class ZeichenKategorie {
     }
 
     public static String[] getAlleZeichenKategorien() {
-        return new String[]{LETTER, NUMBER, OTHER, PUNCTUATION, SEPARATOR, SYMBOL, ALLE};
+        return new String[] {LETTER, NUMBER, OTHER, PUNCTUATION, SEPARATOR, SYMBOL, ALLE};
     }
 }
