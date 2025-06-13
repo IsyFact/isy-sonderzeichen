@@ -1,6 +1,6 @@
 package de.bund.bva.isyfact.testutil;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
