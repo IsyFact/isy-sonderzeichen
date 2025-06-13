@@ -15,7 +15,7 @@ Eine auf den IsyFact-Standards aufsetzende Architektur umfasst mehrere technisch
 dieser Systeme muss sichergestellt werden, dass die benötigten Sonderzeichen durchgängig verarbeitet werden können und
 beim Datenaustausch zwischen diesen Systemen einheitlich durchgereicht und korrekt interpretiert werden.
 
-Isy-sonderzeichen stellt dazu Werkzeuge zur Verfügung.
+Die Bibliothek `isy-sonderzeichen` stellt dazu Werkzeuge zur Verfügung.
 
 ## Installation
 
@@ -32,8 +32,8 @@ Wir freuen uns über Beiträge zur Weiterentwicklung von isy-sonderzeichen.
 
 ### Lizenz
 
-Dieses Projekt ist unter der Apache-2-Lizenz lizenziert. Weitere Informationen findest du in
-der [Lizenzdatei](license/LICENSE).
+Die Software des Projekts ist unter der Apache License, Version 2.0 ([Apache-2.0](LICENSE)) lizenziert.
+Die Dokumentation des Projekts ist unter der Namensnennung 4.0 International ([CC-BY-4.0](isy-sonderzeichen-doc/LICENSE)) lizenziert.
 
 ### Kontakt
 

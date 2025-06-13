@@ -1,3 +1,6 @@
+# 5.0.0
+- `IFS-4709`: Kennzeichnung der Lizenz vereinheitlichen
+
 # 4.0.0
 - `IFS-2872`: Deprecated Klassen und Tests entfernt
   * isy-sonderzeichen in eigenständiges Repository verschoben
