@@ -1,6 +1,3 @@
-# 5.0.0
-- `IFS-4709`: Kennzeichnung der Lizenz vereinheitlichen
-
 # 4.0.0
 ### Features
 - `IFS-2872`: Deprecated Klassen und Tests entfernt
@@ -10,3 +7,4 @@
 - `IFS-4357`: Nacharbeiten nach Entkopplung von isy-sonderzeichen
   * Refactoring von Logging Klassen und Tests
 - `IFS-4203`: Link Checker: Fehlerhafte Links bereinigen
+ 
