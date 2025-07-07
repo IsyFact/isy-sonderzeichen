@@ -63,9 +63,16 @@
     <repositories>
         <repository>
             <id>central-snapshots</id>
-            <url>https://central.sonatype.org/content/repositories/snapshots/</url>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
             <snapshots>
                 <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>central-releases</id>
+            <url>https://central.sonatype.com/</url>
+            <snapshots>
+                <enabled>false</enabled>
             </snapshots>
         </repository>
     </repositories>
@@ -344,6 +351,23 @@
 
     <profiles>
         <profile>
+            <id>centralSnapshot</id>
+            <build>
+                <plugins>
+                  <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>0.8.0</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>central</publishingServerId>
+                            <autoPublish>true</autoPublish>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
             <id>centralRelease</id>
             <build>
                 <plugins>
@@ -374,7 +398,7 @@
                     <plugin>
                         <groupId>org.sonatype.central</groupId>
                         <artifactId>central-publishing-maven-plugin</artifactId>
-                        <version>0.7.0</version>
+                        <version>0.8.0</version>
                         <extensions>true</extensions>
                         <configuration>
                             <publishingServerId>central</publishingServerId>
@@ -384,7 +408,6 @@
                 </plugins>
             </build>
         </profile>
-
         <profile>
             <id>GPGsigning</id>
             <build>
