@@ -1,4 +1,4 @@
-# 5.0.0
+# 4.1.0
 - `IFS-4709`: Kennzeichnung der Lizenz vereinheitlichen
 
 # 4.0.0
