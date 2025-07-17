@@ -1,4 +1,4 @@
-= Anhang
+= Zeichen- und Transkriptionstabellen
 
 == Zusätzliche Zeichen
 In der Tabelle <<table-zusaetzliche-zeichen>> sind die Zeichen dargestellt, die zusätzlich unterstützt werden.
@@ -7,7 +7,7 @@ In der Tabelle <<table-zusaetzliche-zeichen>> sind die Zeichen dargestellt, die 
 .Zusätzliche Zeichen
 [cols="2,1,7",options="header"]
 |===
-|Unicode-Wert $$U+….$$ |Glyph |Unicode-Zeichenname
+|Unicode-Wert ++U+…++ |Glyph |Unicode-Zeichenname
 |0009 |� |CHARACTER TABULATION
 |000A |� |LINE FEED (LF)
 |000D |� |CARRIAGE RETURN (CR)
@@ -586,7 +586,7 @@ In der Tabelle <<table-zusaetzliche-zeichen>> sind die Zeichen dargestellt, die 
 |0398 |Θ |GREEK CAPITAL LETTER THETA
 |0399 |Ι |GREEK CAPITAL LETTER IOTA
 |039A |Κ |GREEK CAPITAL LETTER KAPPA
-|039B |Λ |GREEK CAPITAL LETTER LAMDA
+|039B |Λ |GREEK CAPITAL LETTER LAMBDA
 |039C |Μ |GREEK CAPITAL LETTER MU
 |039D |Ν |GREEK CAPITAL LETTER NU
 |039E |Ξ |GREEK CAPITAL LETTER XI
@@ -617,7 +617,7 @@ In der Tabelle <<table-zusaetzliche-zeichen>> sind die Zeichen dargestellt, die 
 |03B8 |θ |GREEK SMALL LETTER THETA
 |03B9 |ι |GREEK SMALL LETTER IOTA
 |03BA |κ |GREEK SMALL LETTER KAPPA
-|03BB |λ |GREEK SMALL LETTER LAMDA
+|03BB |λ |GREEK SMALL LETTER LAMBDA
 |03BC |μ |GREEK SMALL LETTER MU
 |03BD |ν |GREEK SMALL LETTER NU
 |03BE |ξ |GREEK SMALL LETTER XI
@@ -936,14 +936,14 @@ In der Tabelle <<table-zusaetzliche-zeichen>> sind die Zeichen dargestellt, die 
 
 
 == Transkriptionsregeln
-Die Transkriptionsregeln der IsyFact überführen den DIN SPEC 91379 Zeichensatz in der UTF-8-Codierung, einer Teilmenge des Unicode v4.x Zeichensatzes, in den ASCII-Zeichensatz (phonetische Transformation), s.a. xref:konzept/inhalt.adoc#transkription[Transkription].
+Die Transkriptionsregeln der IsyFact überführen den DIN SPEC 91379 Zeichensatz in der UTF-8-Codierung, einer Teilmenge des Unicode v4.x Zeichensatzes, in den ASCII-Zeichensatz (phonetische Transformation), s.a. xref:konzept.adoc#transkription[Transkription].
 In der Tabelle <<table-transkription>> sind die Transkriptionsregeln für die verschiedenen Zeichen dargestellt.
 
 [[table-transkription]]
 .Transkriptionsregeln
 [cols="2,1,7,2,1",options="header"]
 |===
-|Unicode-Wert $$U+….$$ |Glyph |Unicode-Zeichenname |Unicode-Wert der Transkription |Transkription
+|Unicode-Wert ++U+…++ |Glyph |Unicode-Zeichenname |Unicode-Wert der Transkription |Transkription
 |0009 |� |CHARACTER TABULATION |0009 |
 |000A |� |LINE FEED (LF) |000A |
 |000D |� |CARRIAGE RETURN (CR) |000D |
@@ -1522,7 +1522,7 @@ In der Tabelle <<table-transkription>> sind die Transkriptionsregeln für die ve
 |0398 |Θ |GREEK CAPITAL LETTER THETA | |
 |0399 |Ι |GREEK CAPITAL LETTER IOTA | |
 |039A |Κ |GREEK CAPITAL LETTER KAPPA | |
-|039B |Λ |GREEK CAPITAL LETTER LAMDA | |
+|039B |Λ |GREEK CAPITAL LETTER LAMBDA | |
 |039C |Μ |GREEK CAPITAL LETTER MU | |
 |039D |Ν |GREEK CAPITAL LETTER NU | |
 |039E |Ξ |GREEK CAPITAL LETTER XI | |
@@ -1553,7 +1553,7 @@ In der Tabelle <<table-transkription>> sind die Transkriptionsregeln für die ve
 |03B8 |θ |GREEK SMALL LETTER THETA | |
 |03B9 |ι |GREEK SMALL LETTER IOTA | |
 |03BA |κ |GREEK SMALL LETTER KAPPA | |
-|03BB |λ |GREEK SMALL LETTER LAMDA | |
+|03BB |λ |GREEK SMALL LETTER LAMBDA | |
 |03BC |μ |GREEK SMALL LETTER MU | |
 |03BD |ν |GREEK SMALL LETTER NU | |
 |03BE |ξ |GREEK SMALL LETTER XI | |
@@ -1880,7 +1880,7 @@ In der Tabelle <<table-suchform>> sind die Regeln für die Suchform-Transformati
 .Suchform Transformation
 [cols="2,1,7,2,1",options="header"]
 |===
-|Unicode-Wert $$U+….$$ |Glyph |Unicode-Zeichenname |Unicode-Wert der Transkription |Transkription
+|Unicode-Wert ++U+…++ |Glyph |Unicode-Zeichenname |Unicode-Wert der Transkription |Transkription
 |0041 |A |LATIN CAPITAL LETTER A |0041 |A
 |0041 030B |A̋ |LATIN CAPITAL LETTER A WITH COMBINING DOUBLE ACUTE ACCENT |0041 |A
 |0042 |B |LATIN CAPITAL LETTER B |0042 |B
@@ -2535,9 +2535,9 @@ Die DIN SPEC 91379 erweitert den alten Zeichensatz String.Latin 1.1 in größere
 Bis November 2024 muss dieser Umfang von allen Systemen deutscher Behörden verbindlich unterstützt werden; es ist jedoch nicht realistisch, alle Systeme gleichzeitig umzustellen.
 Stattdessen werden sie schrittweise umgestellt, wodurch es dazu kommen kann, dass umgestellte und nicht umgestellte Systeme miteinander kommunizieren müssen.
 
-Systeme, die noch nicht auf die DIN SPEC 91379 UTF-8-Codierung umgestellt wurden, sollen mit den erweiterten Sonderzeichen umgehen können.
-Wenn ein String.Latin 1.2 (= DIN SPEC 91379 ) Sonderzeichen in String.Latin 1.1 enthalten ist, ist nichts zu tun.
-Wenn das Sonderzeichen in String.Latin 1.1 nicht enthalten ist, wird es gemäß ISO-8859-15 transformiert.
+Systeme, die noch nicht auf die DIN SPEC 91379 UTF-8-Codierung umgestellt wurden, sollen mit den erweiterten Sonderzeichen umgehen können:
+* wenn ein String.Latin 1.2 (= DIN SPEC 91379) Sonderzeichen in String.Latin 1.1 enthalten ist, ist nichts zu tun,
+* wenn das Sonderzeichen in String.Latin 1.1 nicht enthalten ist, wird es gemäß ISO-8859-15 transformiert.
 
 In der Tabelle <<table-legacy>> sind die Transformationsregeln für noch nicht umgestellte Systeme dargestellt, genannt Legacy-Transformation.
 
@@ -3228,7 +3228,7 @@ In der Tabelle <<table-legacy>> sind die Transformationsregeln für noch nicht u
 | 0398 | Θ | GREEK CAPITAL LETTER THETA | 0054+0048 | TH
 | 0399 | Ι | GREEK CAPITAL LETTER IOTA | 0049 | I
 | 039A | Κ | GREEK CAPITAL LETTER KAPPA | 004B | K
-| 039B | Λ | GREEK CAPITAL LETTER LAMDA | 004C | L
+| 039B | Λ | GREEK CAPITAL LETTER LAMBDA | 004C | L
 | 039C | Μ | GREEK CAPITAL LETTER MU | 004D | M
 | 039D | Ν | GREEK CAPITAL LETTER NU | 004E | N
 | 039E | Ξ | GREEK CAPITAL LETTER XI | 0058 | X
@@ -3259,7 +3259,7 @@ In der Tabelle <<table-legacy>> sind die Transformationsregeln für noch nicht u
 | 03B8 | θ | GREEK SMALL LETTER THETA | 0074+0068 | th
 | 03B9 | ι | GREEK SMALL LETTER IOTA | 0069 | i
 | 03BA | κ | GREEK SMALL LETTER KAPPA | 006B | k
-| 03BB | λ | GREEK SMALL LETTER LAMDA | 006C | l
+| 03BB | λ | GREEK SMALL LETTER LAMBDA | 006C | l
 | 03BC | μ | GREEK SMALL LETTER MU | 006D | m
 | 03BD | ν | GREEK SMALL LETTER NU | 006E | n
 | 03BE | ξ | GREEK SMALL LETTER XI | 0078 | x
@@ -3453,14 +3453,14 @@ In der Tabelle <<table-legacy>> sind die Transformationsregeln für noch nicht u
 | 2265 | ≥ | GREATER-THAN OR EQUAL TO | 003E+003D | >=
 |===
 
-== DIN Norm 91379
-Die oben gelisteten Zeichen sind Teil der DIN SPEC 91379. Der Zeichensatz der DIN Norm 91379 enthält alle Zeichen der SPEC und außerdem folgende Schriftzeichen:
+== DIN-Norm 91379
+Die oben gelisteten Zeichen sind Teil der DIN SPEC 91379. Der Zeichensatz der DIN-Norm 91379 enthält alle Zeichen der SPEC und außerdem folgende Schriftzeichen:
 
 [[table-zeichen-dinnorm91379]]
-.Zusätzliche Zeichen DIN Norm 91379
+.Zusätzliche Zeichen DIN-Norm 91379
 [cols="2,1,7",options="header"]
 |===
-|Unicode-Wert $$U+….$$ |Glyph |Unicode-Zeichenname
+|Unicode-Wert ++U+…++ |Glyph |Unicode-Zeichenname
 |0113 030D |ē̍ |LATIN SMALL LETTER E WITH MACRON WITH COMBINING VERTICAL LINE ABOVE
 |014D 030D |ō̍ |LATIN SMALL LETTER O WITH MACRON WITH COMBINING VERTICAL LINE ABOVE
 |1E17 |ḗ |LATIN SMALL LETTER E WITH MACRON AND ACUTE
@@ -3469,14 +3469,14 @@ Die oben gelisteten Zeichen sind Teil der DIN SPEC 91379. Der Zeichensatz der DI
 |2033 |″ |DOUBLE PRIME
 |===
 
-Die Transformatoren für die DIN Norm 91379 verhalten sich bis auf die neuen Zeichen identisch zu denen der DIN SPEC 91379.
+Die Transformatoren für die DIN-Norm 91379 verhalten sich bis auf die neuen Zeichen identisch zu denen der DIN SPEC 91379.
 Die neuen Zeichen werden wie folgt transformiert.
 
 [[table-transkription-dinnorm91379]]
-.Transkriptionsregeln DIN Norm 91379
+.Transkriptionsregeln DIN-Norm 91379
 [cols="2,1,7,2,1",options="header"]
 |===
-|Unicode-Wert $$U+….$$ |Glyph |Unicode-Zeichenname |Unicode-Wert der Transkription |Transkription
+|Unicode-Wert ++U+…++ |Glyph |Unicode-Zeichenname |Unicode-Wert der Transkription |Transkription
 |0113 030D |ē̍ |LATIN SMALL LETTER E WITH MACRON WITH COMBINING VERTICAL LINE ABOVE |0045 |E
 |014D 030D |ō̍ |LATIN SMALL LETTER O WITH MACRON WITH COMBINING VERTICAL LINE ABOVE |004F |O
 |1E17 |ḗ |LATIN SMALL LETTER E WITH MACRON AND ACUTE |0045 |E
@@ -3485,10 +3485,10 @@ Die neuen Zeichen werden wie folgt transformiert.
 |===
 
 [[table-suchform-dinnorm91379]]
-.Suchform Transformation DIN Norm 91379
+.Suchform Transformation DIN-Norm 91379
 [cols="2,1,7,2,1",options="header"]
 |===
-|Unicode-Wert $$U+….$$ |Glyph |Unicode-Zeichenname |Unicode-Wert der Transkription |Transkription
+|Unicode-Wert ++U+…++ |Glyph |Unicode-Zeichenname |Unicode-Wert der Transkription |Transkription
 |0113 030D |ē̍ |LATIN SMALL LETTER E WITH MACRON WITH COMBINING VERTICAL LINE ABOVE |0045 |E
 |014D 030D |ō̍ |LATIN SMALL LETTER O WITH MACRON WITH COMBINING VERTICAL LINE ABOVE |004F |O
 |1E17 |ḗ |LATIN SMALL LETTER E WITH MACRON AND ACUTE |0045 |E
@@ -3497,7 +3497,7 @@ Die neuen Zeichen werden wie folgt transformiert.
 |===
 
 [[table-legacy-dinnorm91379]]
-.Legacy Transformation DIN Norm 91379 nach String Latin 1.1
+.Legacy Transformation DIN-Norm 91379 nach String Latin 1.1
 [cols="2,1,4,3,1",options="header"]
 |===
 | Unicode-Wert | Glyph | Unicode-Zeichenname | Unicode-Wert der Legacy-Transformation | Legacy-Tran.
@@ -3508,10 +3508,10 @@ Die neuen Zeichen werden wie folgt transformiert.
 |2033 |″ |DOUBLE PRIME|0022 |"
 |===
 
-Im Transformator für die DIN Norm 91379 zur DIN SPEC 91379 werden die Zeichen der DIN Norm 91379 wie folgt transformiert, alle anderen Zeichen werden auf sich selbst abgebildet:
+Im Transformator für die DIN-Norm 91379 zur DIN SPEC 91379 werden die Zeichen der DIN-Norm 91379 wie folgt transformiert, alle anderen Zeichen werden auf sich selbst abgebildet:
 
 [[table-legacy-dinnorm91379-zu-dinspec91379]]
-.Legacy Transformation DIN Norm 91379 nach DIN SPEC 91379
+.Legacy Transformation DIN-Norm 91379 nach DIN SPEC 91379
 [cols="2,1,4,3,1",options="header"]
 |===
 | Unicode-Wert | Glyph | Unicode-Zeichenname | Unicode-Wert der Legacy-Transformation | Legacy-Tran.

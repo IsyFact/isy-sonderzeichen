@@ -1,6 +1,6 @@
-name: isy-sonderzeichen-docs
-title: isy-sonderzeichen
+name: sonderzeichen
+title: Baustein Sonderzeichen
 prerelease: true
-start_page: ROOT:konzept/master.adoc
+start_page: ROOT:konzept.adoc
 nav:
   - modules/ROOT/nav.adoc
