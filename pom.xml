@@ -47,7 +47,7 @@
         <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <slf4j.version>2.0.13</slf4j.version>
+        <slf4j.version>2.0.17</slf4j.version>
         <junit.version>4.13.2</junit.version>
         <logback-classic.version>1.5.6</logback-classic.version>
         <logstash-logback-encoder.version>8.0</logstash-logback-encoder.version>
