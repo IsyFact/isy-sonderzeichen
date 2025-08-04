@@ -67,13 +67,9 @@
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
-        </repository>
-        <repository>
-            <id>central-releases</id>
-            <url>https://central.sonatype.com/</url>
-            <snapshots>
+            <releases>
                 <enabled>false</enabled>
-            </snapshots>
+            </releases>
         </repository>
     </repositories>
 
