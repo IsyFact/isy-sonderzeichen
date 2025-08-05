@@ -1,6 +1,0 @@
-name: isy-sonderzeichen-docs
-title: isy-sonderzeichen
-prerelease: true
-start_page: ROOT:konzept/master.adoc
-nav:
-  - modules/ROOT/nav.adoc

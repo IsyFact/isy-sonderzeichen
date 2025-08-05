@@ -1,0 +1,7 @@
+*Java Bibliothek / IT-System*
+
+[cols="5m,2,3",options="header"]
+|====
+|Name |Art |Version
+|isy-sonderzeichen |Bibliothek |{page-component-version}
+|====

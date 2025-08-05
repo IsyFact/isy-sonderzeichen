@@ -33,7 +33,7 @@ Wir freuen uns über Beiträge zur Weiterentwicklung von isy-sonderzeichen.
 ### Lizenz
 
 Die Software des Projekts ist unter der Apache License, Version 2.0 ([Apache-2.0](LICENSE)) lizenziert.
-Die Dokumentation des Projekts ist unter der Namensnennung 4.0 International ([CC-BY-4.0](isy-sonderzeichen-doc/LICENSE)) lizenziert.
+Die Dokumentation des Projekts ist unter der Namensnennung 4.0 International ([CC-BY-4.0](docs/LICENSE)) lizenziert.
 
 ### Kontakt
 
