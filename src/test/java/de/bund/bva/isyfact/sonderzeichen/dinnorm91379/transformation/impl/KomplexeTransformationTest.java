@@ -1,9 +1,9 @@
 package de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.Transformator;
 
@@ -12,7 +12,7 @@ public class KomplexeTransformationTest {
     Transformator transformator;
     KomplexeTransformation komplexeTransformation;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         transformator = new IdentischerTransformator();
         komplexeTransformation = new KomplexeTransformation(transformator);

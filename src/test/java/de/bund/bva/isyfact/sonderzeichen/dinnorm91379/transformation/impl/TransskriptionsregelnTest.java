@@ -1,12 +1,12 @@
 package de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Checks the function of the transcription rules.
@@ -17,7 +17,7 @@ public class TransskriptionsregelnTest {
     private Set<Character> trennzeichen;
     private Set<Character> pruefzeichen;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         trennzeichen = new HashSet<>();
         trennzeichen.add(' ');

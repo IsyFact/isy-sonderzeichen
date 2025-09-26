@@ -7,8 +7,8 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class LegacyTransformatorTabelleTest {
 
@@ -40,7 +40,7 @@ public class LegacyTransformatorTabelleTest {
                 // Check if single symbol is part of String.Latin 1.1
                 for (String transformiertEinzeln : transformiertArray) {
                     if (!stringlatinChars.contains(transformiertEinzeln)) {
-                        Assert.fail("Fehlerhaftes Symbol in Zeile " + (i + 1) + ".");
+                        Assertions.fail("Fehlerhaftes Symbol in Zeile " + (i + 1) + ".");
                     }
                 }
             }

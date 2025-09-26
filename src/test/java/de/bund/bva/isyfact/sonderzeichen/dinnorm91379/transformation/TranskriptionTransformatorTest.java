@@ -8,17 +8,15 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.impl.TranskriptionTransformator;
 
 /**
  * Parametrized test class which tests the {@link TranskriptionTransformator}.
  */
-@RunWith(Parameterized.class)
 public class TranskriptionTransformatorTest {
     /**
      * Some text with no only latin letters.
@@ -54,12 +52,12 @@ public class TranskriptionTransformatorTest {
     /**
      * Current test data set by JUnit.
      */
-    private final String testData;
+    private String testData;
 
     /**
      * Current expected result to {@link #testData} set by JUnit.
      */
-    private final String expected;
+    private String expected;
 
     /**
      * Constructor which sets {@link #testData} and {@link #expected}.
@@ -67,7 +65,7 @@ public class TranskriptionTransformatorTest {
      * @param testData current test data
      * @param expected current expected result
      */
-    public TranskriptionTransformatorTest(String testData, String expected) {
+    public void initTranskriptionTransformatorTest(String testData, String expected) {
         this.testData = testData;
         this.expected = expected;
     }
@@ -77,7 +75,6 @@ public class TranskriptionTransformatorTest {
      *
      * @return collection of the test data.
      */
-    @Parameterized.Parameters(name = "{index}: testData={0}\nexpected={1}")
     public static Collection<Object[]> data() {
         List<Object[]> testData = new ArrayList<>();
         for (int i = 0; i < RANDOM_TESTDATA.length; i++) {
@@ -99,11 +96,13 @@ public class TranskriptionTransformatorTest {
      * Checks a single transcription from {@link #testData} to {@link #expected}.
      * Will be called multiple times by JUnit.
      */
-    @Test
-    public void checkTranscription() {
+    @MethodSource("data")
+    @ParameterizedTest(name = "{index}: testData={0}\nexpected={1}")
+    public void checkTranscription(String testData, String expected) {
+        initTranskriptionTransformatorTest(testData, expected);
         TranskriptionTransformator transkriptionTransformator = new TranskriptionTransformator();
         transkriptionTransformator.initialisiere(null);
 
-        Assert.assertEquals(transkriptionTransformator.transformiere(testData), expected);
+        Assertions.assertEquals(transkriptionTransformator.transformiere(testData), expected);
     }
 }
