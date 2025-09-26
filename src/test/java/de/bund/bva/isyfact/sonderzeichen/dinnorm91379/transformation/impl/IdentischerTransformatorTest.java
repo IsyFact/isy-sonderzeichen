@@ -1,12 +1,12 @@
 package de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +27,7 @@ public class IdentischerTransformatorTest {
      */
     public AbstractTransformator transformator;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         this.transformator = new IdentischerTransformator();
     }

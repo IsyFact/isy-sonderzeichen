@@ -48,7 +48,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <slf4j.version>2.0.17</slf4j.version>
-        <junit.version>4.13.2</junit.version>
         <logback-classic.version>1.5.6</logback-classic.version>
         <logstash-logback-encoder.version>8.1</logstash-logback-encoder.version>
         <cyclonedx-maven-plugin.version>2.7.9</cyclonedx-maven-plugin.version>
@@ -73,17 +72,16 @@
             <version>${logstash-logback-encoder.version}</version>
             <scope>test</scope>
         </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.13.4</version>
+      <scope>test</scope>
+    </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.5.18</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
