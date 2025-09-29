@@ -15,3 +15,8 @@
 - `IFS-4764`: Bereinigung technischer Schulden
 
 ### DEPENDENCY UPGRADES
+- Update IsyFact/isy-github-actions-templates von Version 1.7.0 auf 1.8.0
+
+### DEPENDENCY UPGRADES
+- Update IsyFact/isy-github-actions-templates von Version 1.7.0 auf 1.8.0
+
