@@ -311,11 +311,11 @@ public abstract class AbstractTransformator implements Transformator {
     private String getCodepoint(String text) {
         if (text == null) {
             return "null".codePoints()
-                .mapToObj(e -> String.format("%04X", e))
+                .mapToObj(e -> "%04X".formatted(e))
                 .collect(Collectors.joining(" + "));
         }
         return text.codePoints()
-            .mapToObj(e -> String.format("%04X", e))
+            .mapToObj(e -> "%04X".formatted(e))
             .collect(Collectors.joining(" + "));
     }
 

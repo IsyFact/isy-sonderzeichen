@@ -57,7 +57,7 @@ public class TestAppender extends ListAppender<ILoggingEvent> {
      * @return true, if event contains marker, else false.
      */
     private static boolean eventContainsMarker(ILoggingEvent event, String markerName, String markerValue) {
-        Marker rootmarker = event.getMarkerList().get(0);
+        Marker rootmarker = event.getMarkerList().getFirst();
 
         Stream<Marker> markers = StreamSupport.stream(Spliterators.spliteratorUnknownSize(rootmarker.iterator(),
             Spliterator.ORDERED), false);
