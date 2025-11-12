@@ -11,6 +11,9 @@
     * org.apache.maven.plugins:maven-gpg-plugin von 3.0.1 auf 3.2.8
     * org.apache.maven.plugins:maven-enforcer-plugin von 3.5.0 auf 3.6.1
 
+### BREAKING CHANGES
+- `IFS-4922`: Aktualisierung von Java 17 auf 25
+
 ### DOKUMENTATION
 - `IFS-4764`: Bereinigung technischer Schulden
 
