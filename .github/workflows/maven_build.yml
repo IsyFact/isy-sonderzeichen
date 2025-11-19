@@ -18,17 +18,16 @@ on:
 
 jobs:
   Version:
-    uses: IsyFact/isy-github-actions-templates/.github/workflows/next_version.yml@v1.7.0
+    uses: IsyFact/isy-github-actions-templates/.github/workflows/next_version.yml@v2.0.0
     with:
-      next-version: 4.1.0
+      next-version: 5.0.0
       calculate-rc: ${{ startsWith(github.ref, 'refs/heads/release/') }}
 
   Maven:
     needs: [ Version ]
-    uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_build_template.yml@v1.7.0
+    uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_build_template.yml@v2.0.0
     with:
       version: ${{ needs.Version.outputs.next-version }}
-      jdk-version: 21
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
@@ -36,10 +35,9 @@ jobs:
     if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') &&
       (github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/heads/release/'))
     needs: [ Version, Maven ]
-    uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_deploy_template.yml@v1.7.0
+    uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_deploy_template.yml@v2.0.0
     with:
       version: ${{ needs.Version.outputs.next-version }}
-      jdk-version: 21
       maven-opts: '-PcentralSnapshot'
       deploy-server-id: central
       sbom: ${{ startsWith(github.ref, 'refs/heads/release/') }}

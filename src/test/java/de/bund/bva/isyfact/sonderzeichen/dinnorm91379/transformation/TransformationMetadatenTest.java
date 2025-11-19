@@ -72,12 +72,12 @@ public class TransformationMetadatenTest {
         Assertions.assertEquals(STRING_TRANSFORMIERT_AUF_LEER_EXPECTED, transformation.getTransformierterText());
         Assertions.assertEquals(3, transformation.getMetadatenList().size());
 
-        Assertions.assertEquals("™", transformation.getMetadatenList().get(0).getAltesZeichen());
-        Assertions.assertEquals("2122", transformation.getMetadatenList().get(0).getAlteCodepoints());
-        Assertions.assertEquals("", transformation.getMetadatenList().get(0).getNeuesZeichen());
-        Assertions.assertEquals("", transformation.getMetadatenList().get(0).getNeueCodepoints());
-        Assertions.assertEquals(0, transformation.getMetadatenList().get(0).getAltePosition());
-        Assertions.assertEquals(0, transformation.getMetadatenList().get(0).getNeuePosition());
+        Assertions.assertEquals("™", transformation.getMetadatenList().getFirst().getAltesZeichen());
+        Assertions.assertEquals("2122", transformation.getMetadatenList().getFirst().getAlteCodepoints());
+        Assertions.assertEquals("", transformation.getMetadatenList().getFirst().getNeuesZeichen());
+        Assertions.assertEquals("", transformation.getMetadatenList().getFirst().getNeueCodepoints());
+        Assertions.assertEquals(0, transformation.getMetadatenList().getFirst().getAltePosition());
+        Assertions.assertEquals(0, transformation.getMetadatenList().getFirst().getNeuePosition());
 
         Assertions.assertEquals("™", transformation.getMetadatenList().get(1).getAltesZeichen());
         Assertions.assertEquals("2122", transformation.getMetadatenList().get(1).getAlteCodepoints());
@@ -104,12 +104,12 @@ public class TransformationMetadatenTest {
         Assertions.assertEquals(STRING_ENTFERNE_PRAEFIX_EXPECTED, transformation.getTransformierterText());
         Assertions.assertEquals(3, transformation.getMetadatenList().size());
 
-        Assertions.assertEquals("ツ", transformation.getMetadatenList().get(0).getAltesZeichen());
-        Assertions.assertEquals("30C4", transformation.getMetadatenList().get(0).getAlteCodepoints());
-        Assertions.assertEquals(" ", transformation.getMetadatenList().get(0).getNeuesZeichen());
-        Assertions.assertEquals("0020", transformation.getMetadatenList().get(0).getNeueCodepoints());
-        Assertions.assertEquals(0, transformation.getMetadatenList().get(0).getAltePosition());
-        Assertions.assertEquals(-1, transformation.getMetadatenList().get(0).getNeuePosition());
+        Assertions.assertEquals("ツ", transformation.getMetadatenList().getFirst().getAltesZeichen());
+        Assertions.assertEquals("30C4", transformation.getMetadatenList().getFirst().getAlteCodepoints());
+        Assertions.assertEquals(" ", transformation.getMetadatenList().getFirst().getNeuesZeichen());
+        Assertions.assertEquals("0020", transformation.getMetadatenList().getFirst().getNeueCodepoints());
+        Assertions.assertEquals(0, transformation.getMetadatenList().getFirst().getAltePosition());
+        Assertions.assertEquals(-1, transformation.getMetadatenList().getFirst().getNeuePosition());
 
         Assertions.assertEquals("Ä", transformation.getMetadatenList().get(1).getAltesZeichen());
         Assertions.assertEquals("00C4", transformation.getMetadatenList().get(1).getAlteCodepoints());
@@ -136,12 +136,12 @@ public class TransformationMetadatenTest {
         Assertions.assertEquals(STRING_ENTFERNE_SUFFIX_EXPECTED, transformation.getTransformierterText());
         Assertions.assertEquals(1, transformation.getMetadatenList().size());
 
-        Assertions.assertEquals("ツ", transformation.getMetadatenList().get(0).getAltesZeichen());
-        Assertions.assertEquals("30C4", transformation.getMetadatenList().get(0).getAlteCodepoints());
-        Assertions.assertEquals(" ", transformation.getMetadatenList().get(0).getNeuesZeichen());
-        Assertions.assertEquals("0020", transformation.getMetadatenList().get(0).getNeueCodepoints());
-        Assertions.assertEquals(1, transformation.getMetadatenList().get(0).getAltePosition());
-        Assertions.assertEquals(-2, transformation.getMetadatenList().get(0).getNeuePosition());
+        Assertions.assertEquals("ツ", transformation.getMetadatenList().getFirst().getAltesZeichen());
+        Assertions.assertEquals("30C4", transformation.getMetadatenList().getFirst().getAlteCodepoints());
+        Assertions.assertEquals(" ", transformation.getMetadatenList().getFirst().getNeuesZeichen());
+        Assertions.assertEquals("0020", transformation.getMetadatenList().getFirst().getNeueCodepoints());
+        Assertions.assertEquals(1, transformation.getMetadatenList().getFirst().getAltePosition());
+        Assertions.assertEquals(-2, transformation.getMetadatenList().getFirst().getNeuePosition());
     }
 
     @Test
@@ -154,12 +154,12 @@ public class TransformationMetadatenTest {
         Assertions.assertEquals(STRING_ENTFERNE_MEHRERE_LEERZEICHEN_EXPECTED, transformation.getTransformierterText());
         Assertions.assertEquals(6, transformation.getMetadatenList().size());
 
-        Assertions.assertEquals("ツ", transformation.getMetadatenList().get(0).getAltesZeichen());
-        Assertions.assertEquals("30C4", transformation.getMetadatenList().get(0).getAlteCodepoints());
-        Assertions.assertEquals(" ", transformation.getMetadatenList().get(0).getNeuesZeichen());
-        Assertions.assertEquals("0020", transformation.getMetadatenList().get(0).getNeueCodepoints());
-        Assertions.assertEquals(1, transformation.getMetadatenList().get(0).getAltePosition());
-        Assertions.assertEquals(1, transformation.getMetadatenList().get(0).getNeuePosition());
+        Assertions.assertEquals("ツ", transformation.getMetadatenList().getFirst().getAltesZeichen());
+        Assertions.assertEquals("30C4", transformation.getMetadatenList().getFirst().getAlteCodepoints());
+        Assertions.assertEquals(" ", transformation.getMetadatenList().getFirst().getNeuesZeichen());
+        Assertions.assertEquals("0020", transformation.getMetadatenList().getFirst().getNeueCodepoints());
+        Assertions.assertEquals(1, transformation.getMetadatenList().getFirst().getAltePosition());
+        Assertions.assertEquals(1, transformation.getMetadatenList().getFirst().getNeuePosition());
 
         Assertions.assertEquals("ツ", transformation.getMetadatenList().get(1).getAltesZeichen());
         Assertions.assertEquals("30C4", transformation.getMetadatenList().get(1).getAlteCodepoints());
@@ -207,12 +207,12 @@ public class TransformationMetadatenTest {
         Assertions.assertEquals(STRING_LEGACY_KUERZEN_EXPECTED, transformation.getTransformierterText());
         Assertions.assertEquals(2, transformation.getMetadatenList().size());
 
-        Assertions.assertEquals("R̥̄", transformation.getMetadatenList().get(0).getAltesZeichen());
-        Assertions.assertEquals("0052 + 0325 + 0304", transformation.getMetadatenList().get(0).getAlteCodepoints());
-        Assertions.assertEquals("R", transformation.getMetadatenList().get(0).getNeuesZeichen());
-        Assertions.assertEquals("0052", transformation.getMetadatenList().get(0).getNeueCodepoints());
-        Assertions.assertEquals(0, transformation.getMetadatenList().get(0).getAltePosition());
-        Assertions.assertEquals(0, transformation.getMetadatenList().get(0).getNeuePosition());
+        Assertions.assertEquals("R̥̄", transformation.getMetadatenList().getFirst().getAltesZeichen());
+        Assertions.assertEquals("0052 + 0325 + 0304", transformation.getMetadatenList().getFirst().getAlteCodepoints());
+        Assertions.assertEquals("R", transformation.getMetadatenList().getFirst().getNeuesZeichen());
+        Assertions.assertEquals("0052", transformation.getMetadatenList().getFirst().getNeueCodepoints());
+        Assertions.assertEquals(0, transformation.getMetadatenList().getFirst().getAltePosition());
+        Assertions.assertEquals(0, transformation.getMetadatenList().getFirst().getNeuePosition());
 
         Assertions.assertEquals("C̨̆", transformation.getMetadatenList().get(1).getAltesZeichen());
         Assertions.assertEquals("0043 + 0328 + 0306", transformation.getMetadatenList().get(1).getAlteCodepoints());
@@ -232,12 +232,12 @@ public class TransformationMetadatenTest {
         Assertions.assertEquals(STRING_LEGACY_ERWEITERN_EXPECTED, transformation.getTransformierterText());
         Assertions.assertEquals(2, transformation.getMetadatenList().size());
 
-        Assertions.assertEquals("™", transformation.getMetadatenList().get(0).getAltesZeichen());
-        Assertions.assertEquals("2122", transformation.getMetadatenList().get(0).getAlteCodepoints());
-        Assertions.assertEquals("(TM)", transformation.getMetadatenList().get(0).getNeuesZeichen());
-        Assertions.assertEquals("0028 + 0054 + 004D + 0029", transformation.getMetadatenList().get(0).getNeueCodepoints());
-        Assertions.assertEquals(0, transformation.getMetadatenList().get(0).getAltePosition());
-        Assertions.assertEquals(0, transformation.getMetadatenList().get(0).getNeuePosition());
+        Assertions.assertEquals("™", transformation.getMetadatenList().getFirst().getAltesZeichen());
+        Assertions.assertEquals("2122", transformation.getMetadatenList().getFirst().getAlteCodepoints());
+        Assertions.assertEquals("(TM)", transformation.getMetadatenList().getFirst().getNeuesZeichen());
+        Assertions.assertEquals("0028 + 0054 + 004D + 0029", transformation.getMetadatenList().getFirst().getNeueCodepoints());
+        Assertions.assertEquals(0, transformation.getMetadatenList().getFirst().getAltePosition());
+        Assertions.assertEquals(0, transformation.getMetadatenList().getFirst().getNeuePosition());
 
         Assertions.assertEquals("‰", transformation.getMetadatenList().get(1).getAltesZeichen());
         Assertions.assertEquals("2030", transformation.getMetadatenList().get(1).getAlteCodepoints());
