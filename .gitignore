@@ -18,6 +18,12 @@ bin/
 *.ear
 hs_err_pid*
 
+# Ignore Node-specific file
+node_modules/
+
+# Ignore Antora-specific files
+build/
+
 # Ignore Maven-specific files
 target/
 .flattened-pom.xml

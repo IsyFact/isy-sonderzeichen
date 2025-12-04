@@ -1,0 +1,21 @@
+{
+  "name": "isyfact-sonderzeichen-local-documentation",
+  "version": "4.0.0",
+  "scripts": {
+    "build:local": "antora antora-playbook-local.yml"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://isyfact.github.io",
+  "devDependencies": {
+    "@antora/cli": "^3.1.10",
+    "@antora/lunr-extension": "^1.0.0-alpha.10",
+    "@antora/site-generator-default": "^3.1.10",
+    "font-awesome": "^4.7.0"
+  },
+  "overrides": {
+    "glob-parent": "5.1.2"
+  },
+  "dependencies": {
+    "antora": "^3.1.10"
+  }
+}
