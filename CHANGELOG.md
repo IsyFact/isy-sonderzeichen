@@ -18,3 +18,8 @@
 - `IFS-4764`: Bereinigung technischer Schulden
 
 ### DEPENDENCY UPGRADES
+- Update ch.qos.logback:logback-classic von Version 1.5.18 auf 1.5.20
+
+### DEPENDENCY UPGRADES
+- Update ch.qos.logback:logback-classic von Version 1.5.18 auf 1.5.20
+
