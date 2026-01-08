@@ -1,4 +1,10 @@
 # 5.0.0
+
+## [5.0.0]
+
+### /^### [(dependency upgrades|DEPENDENCY UPGRADES)]
+
+- Bump `com.github.spotbugs:spotbugs-maven-plugin` from 4.8.5.0 to 4.9.8.1 ([#119](https://github.com/IsyFact/isy-sonderzeichen/pull/119))
 ### FEATURES
 - `IFS-4709`: Kennzeichnung der Lizenz vereinheitlichen
 - `IFS-4531`: Update von Flatten Maven Plugin auf Version 1.7.1
