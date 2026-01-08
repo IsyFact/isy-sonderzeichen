@@ -26,11 +26,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: dependabot/fetch-metadata@v2
-        id: metadata
-        with:
-          github-token: ${{ secrets.DEPENDABOT_TOKEN }}
-
       - uses: dangoslen/dependabot-changelog-helper@v4
         with:
           activationLabels: dependencies
@@ -39,13 +34,6 @@ jobs:
           version: ${{ needs.Version.outputs.next-version }}
           sectionHeader: /^### [(dependency upgrades|DEPENDENCY UPGRADES)]
 
-      - name: Set package & version
-        shell: bash
-        run: |
-          pkg=$(echo "${{ steps.metadata.outputs.dependency-names }}" | cut -d',' -f1)
-          echo "pkg=$pkg" >> $GITHUB_ENV
-          echo "new_version=${{ steps.metadata.outputs.new-version }}" >> $GITHUB_ENV
-
       - uses: stefanzweifel/git-auto-commit-action@v6
         with:
-          commit_message: "chore: adds changelog entry after upgrading \`$pkg\` to $new_version"
+          commit_message: "chore: adds changelog entry after upgrading dependency version"
