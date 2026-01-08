@@ -13,13 +13,7 @@ on:
       - unlabeled
 
 jobs:
-  version:
-    uses: IsyFact/isy-github-actions-templates/.github/workflows/next_version.yml@v2.1.1
-    with:
-      next-version: 5.0.0
-
   changelog:
-    needs: [version]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -31,7 +25,7 @@ jobs:
           activationLabels: dependencies
           changelogPath: './CHANGELOG.md'
           dependencyTool: dependabot
-          version: ${{ needs.Version.outputs.next-version }}
+          version: 5.0.0
           sectionHeader: /^### [(dependency upgrades|DEPENDENCY UPGRADES)]
 
       - uses: stefanzweifel/git-auto-commit-action@v6
