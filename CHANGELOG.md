@@ -1,4 +1,10 @@
 # 5.0.0
+
+## [5.0.0]
+
+### /^### [(dependency upgrades|DEPENDENCY UPGRADES)]
+
+- Bump `actions/checkout` from 4 to 6 ([#132](https://github.com/IsyFact/isy-sonderzeichen/pull/132))
 ### FEATURES
 - `IFS-4709`: Kennzeichnung der Lizenz vereinheitlichen
 - `IFS-4531`: Update von Flatten Maven Plugin auf Version 1.7.1
