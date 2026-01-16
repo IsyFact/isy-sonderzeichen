@@ -1,5 +1,6 @@
 # 5.0.0
 ### FEATURES
+- `IFS-4734`: Verwendungen des Begriffs "Service" und damit verwandter Begriffe korrigieren
 - `IFS-4709`: Kennzeichnung der Lizenz vereinheitlichen
 - `IFS-4531`: Update von Flatten Maven Plugin auf Version 1.7.1
 - `IFS-4804`: Update der Third Party Dependencies:
