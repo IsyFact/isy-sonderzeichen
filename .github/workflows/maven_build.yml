@@ -18,7 +18,7 @@ on:
 
 jobs:
   Version:
-    uses: IsyFact/isy-github-actions-templates/.github/workflows/next_version.yml@v2.1.1
+    uses: IsyFact/isy-github-actions-templates/.github/workflows/next_version.yml@v2.2.0
     with:
       next-version: 5.0.0
       calculate-rc: ${{ startsWith(github.ref, 'refs/heads/release/') }}
