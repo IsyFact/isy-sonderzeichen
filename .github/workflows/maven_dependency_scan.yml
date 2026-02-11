@@ -1,9 +1,9 @@
 name: Maven Dependency Scan
 on:
-  push:
+  pull_request:
     branches:
       - develop
-      - release/**
+      - support/**
     paths:
       - 'pom.xml'
   workflow_dispatch:
