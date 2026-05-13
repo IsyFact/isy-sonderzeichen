@@ -46,7 +46,7 @@
         <maven-enforcer-plugin.version>3.6.2</maven-enforcer-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <slf4j.version>2.0.17</slf4j.version>
+        <slf4j.version>2.0.18</slf4j.version>
         <logback-classic.version>1.5.6</logback-classic.version>
         <logstash-logback-encoder.version>8.1</logstash-logback-encoder.version>
         <cyclonedx-maven-plugin.version>2.7.9</cyclonedx-maven-plugin.version>
