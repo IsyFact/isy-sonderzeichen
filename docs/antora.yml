@@ -1,0 +1,6 @@
+name: sonderzeichen
+title: Baustein Sonderzeichen
+prerelease: false
+start_page: ROOT:konzept.adoc
+nav:
+  - modules/ROOT/nav.adoc

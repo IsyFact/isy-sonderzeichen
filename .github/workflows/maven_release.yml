@@ -5,20 +5,18 @@ on:
 
 jobs:
   Build:
-    uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_build_template.yml@v1.4.0
+    uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_build_template.yml@v2.3.0
     with:
-      jdk-version: 21
       version: ${{ github.ref_name }}
       sonar-skip: true
 
-  DeployMavenCentral:
+  DeployReleaseVersion:
     needs: [ Build ]
-    uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_deploy_template.yml@v1.6.0
+    uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_deploy_template.yml@v2.3.0
     with:
-      jdk-version: 21
       version: ${{ github.ref_name }}
-      maven-opts: '-P centralRelease'
-      deploy-server-id: ossrh
+      maven-opts: '-PcentralRelease'
+      deploy-server-id: central
       sbom: true
       sign: true
       environment: 'Release'
@@ -29,10 +27,9 @@ jobs:
       DEPLOY_SERVER_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
 
   DependencyMonitor:
-    needs: [ DeployMavenCentral ]
-    uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_dependency_scan_template.yml@v1.4.0
+    needs: [ DeployReleaseVersion ]
+    uses: IsyFact/isy-github-actions-templates/.github/workflows/maven_dependency_scan_template.yml@v2.3.0
     with:
-      jdk-version: 21
       snyk-reference: ${{ github.ref_name }}
       snyk-organization: ${{ vars.SNYK_ORG_ID }}
     secrets:

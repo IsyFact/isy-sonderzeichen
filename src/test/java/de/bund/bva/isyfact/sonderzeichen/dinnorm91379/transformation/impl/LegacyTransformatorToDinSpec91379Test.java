@@ -1,7 +1,7 @@
 package de.bund.bva.isyfact.sonderzeichen.dinnorm91379.transformation.impl;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class LegacyTransformatorToDinSpec91379Test {
 
@@ -25,25 +25,25 @@ public class LegacyTransformatorToDinSpec91379Test {
     public void checkLegacyTransformationDinNorm() {
         LegacyTransformatorToDinSpec91379 legacyTransformator = new LegacyTransformatorToDinSpec91379();
         legacyTransformator.initialisiere(null);
-        Assert.assertEquals("a™‰R̥̄CC̨̆àĐēōe \t'\"", legacyTransformator.transformiereOhneTrim(STRING_DIN_NORM));
-        Assert.assertEquals("a™‰R̥̄CC̨̆àĐēōe \t'\"", legacyTransformator.transformiere(STRING_DIN_NORM));
+        Assertions.assertEquals("a™‰R̥̄CC̨̆àĐēōe \t'\"", legacyTransformator.transformiereOhneTrim(STRING_DIN_NORM));
+        Assertions.assertEquals("a™‰R̥̄CC̨̆àĐēōe \t'\"", legacyTransformator.transformiere(STRING_DIN_NORM));
     }
 
     @Test
     public void checkLegacyTransformationNonDinNorm() {
         LegacyTransformatorToDinSpec91379 legacyTransformator = new LegacyTransformatorToDinSpec91379();
         legacyTransformator.initialisiere(null);
-        Assert.assertEquals("   a   R̥̄C C̨̆  ē    ", legacyTransformator.transformiereOhneTrim(
+        Assertions.assertEquals("   a   R̥̄C C̨̆  ē    ", legacyTransformator.transformiereOhneTrim(
             STRING_NON_DIN_NORM));
-        Assert.assertEquals("a R̥̄C C̨̆ ē", legacyTransformator.transformiere(STRING_NON_DIN_NORM));
+        Assertions.assertEquals("a R̥̄C C̨̆ ē", legacyTransformator.transformiere(STRING_NON_DIN_NORM));
     }
 
     @Test
     public void checkLegacyTransformationDiacriticalMarks() {
         LegacyTransformatorToDinSpec91379 legacyTransformator = new LegacyTransformatorToDinSpec91379();
         legacyTransformator.initialisiere(null);
-        Assert.assertEquals("eR̥̄ m  ö ", legacyTransformator.transformiereOhneTrim(STRING_DIAKRITISCHE_ZEICHEN));
-        Assert.assertEquals("eR̥̄ m ö", legacyTransformator.transformiere(STRING_DIAKRITISCHE_ZEICHEN));
+        Assertions.assertEquals("eR̥̄ m  ö ", legacyTransformator.transformiereOhneTrim(STRING_DIAKRITISCHE_ZEICHEN));
+        Assertions.assertEquals("eR̥̄ m ö", legacyTransformator.transformiere(STRING_DIAKRITISCHE_ZEICHEN));
     }
 
 }

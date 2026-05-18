@@ -1,6 +1,24 @@
-= Nutzungsvorgaben Umgang mit Sonderzeichen: Inhalt
+= Nutzungsvorgaben Sonderzeichen
+:navtitle: Nutzungsvorgaben
 
-// tag::inhalt[]
+include::partial$library.adoc[]
+
+In Anwendungen nach den IsyFact-Standards werden Daten in internationaler Schreibweise erfasst und gespeichert.
+Dies sind z.B. die Namen von Personen und Orten.
+Während die Eingabe von internationalen Sonderzeichen über eine deutsche Tastatur nur einen beschränkten Umfang an Sonderzeichen erlaubt, werden möglicherweise auch Daten abgelegt, die international landesspezifisch erfasst wurden.
+Hierin können alle landestypischen Sonderzeichen enthalten sein.
+Insbesondere also auch solche, die nicht über eine deutsche Tastatur eingegeben werden können.
+
+Eine auf den IsyFact-Standards aufsetzende Architektur umfasst mehrere technische Systeme in einer Umgebung.
+Für jedes dieser Systeme muss sichergestellt werden, dass die benötigten Sonderzeichen durchgängig verarbeitet werden können und beim Datenaustausch zwischen diesen Systemen einheitlich durchgereicht und korrekt interpretiert werden.
+
+In den Nutzungsvorgaben wird zunächst der Zeichensatz festgelegt, der innerhalb der Anwendungen verwendet werden soll.
+Abschließend wird für die technischen Systeme angegeben, wo die entsprechenden Konfigurationseinträge zur Verwendung des Zeichensatzes vorgenommen werden müssen.
+
+IMPORTANT: Internationalisierung (I18N) bedeutet, ein Programm so zu entwerfen und umzusetzen, dass die Anpassung an andere Sprachen möglich ist, ohne den Quellcode zu ändern.
+Internationalisierung ist nicht Bestandteil dieser Nutzungsvorgaben.
+
+
 [[konfigurationseinstellungen-fuer-den-zeichensatz]]
 == Konfigurationseinstellungen für den Zeichensatz
 
@@ -10,7 +28,7 @@ Um zu erreichen, dass jedes IsyFact-konforme System Sonderzeichen in gleicher We
 [[betriebssystem]]
 === Betriebssystem
 
-Die Standard-Zeichencodierung aller in der xref:glossary:glossary:master.adoc#glossar-plattform[Plattform] verwendeten Betriebssysteme muss einheitlich auf die Verwendung von Unicode v4.x in der UTF-8-Codierung gesetzt werden.
+Die Standard-Zeichencodierung aller in der xref:glossary::terms-definitions.adoc#glossar-plattform[Plattform] verwendeten Betriebssysteme muss einheitlich auf die Verwendung von Unicode v4.x in der UTF-8-Codierung gesetzt werden.
 Unter Linux-Derivaten kann unter anderem mit dem Parameter
 
 `LC_CTYPE = UTF8`
@@ -47,20 +65,6 @@ Hierzu sind diese Einstellungen in der entsprechenden Konfigurationsdatei `jpa.x
 </bean>
 ----
 
-In Eclipse ist an mehreren Stellen die Zeichencodierung zu setzen.
-Das erfolgt über den Preferences-Dialog von Eclipse, der über die Menüleiste aufgerufen wird (`Window - Preferences...`).
-Folgende Einstellungen sind zu machen:
-
-[source,text]
-----
-General -> Workspace: Text file encoding - Other = UTF-8
-Web and XML -> CSS Files: Encoding = ISO 10646/Unicode(UTF-8)
-Web and XML -> HTML Files: Encoding = ISO 10646/Unicode(UTF-8)
-Web and XML -> JSP Files: Encoding = ISO 10646/Unicode(UTF-8)
-Web and XML -> XML Files: Encoding = ISO 10646/Unicode(UTF-8)
-----
-
-WARNING: Diese Einstellungen sind Workspace-spezifisch, d.h. sie müssen für jeden Workspace individuell eingestellt werden.
 
 [[java]]
 === Java
@@ -148,21 +152,19 @@ In HTML wird die Zeichencodierung in den Metadaten des HEAD-Tags wie folgt angeg
 Damit dürfen auch keine HTML-Sonderzeichen mehr verwendet werden, sondern nur noch UTF-8-codierte Zeichen.
 
 [[bibliothek-isy-sonderzeichen]]
-== Bibliothek „isy-sonderzeichen“
+== Bibliothek `isy-sonderzeichen`
 
-Dieses Kapitel beschreibt die Verwendung der Bibliothek `isy-sonderzeichen`.
-Sie stellt anderen Anwendungen Services zur Transformation und Validierung von Zeichenketten zur Verfügung.
+Die Bibliothek `isy-sonderzeichen` stellt Klassen zur Transformation und Validierung von Zeichenketten zur Verfügung.
 Dies geschieht mittels einer festen Anzahl von Transformatoren, die für eine einheitliche Transformation von Zeichenketten innerhalb der Systemumgebung sorgen.
 
-Im Zuge der Umsetzung der DIN SPEC 91379 wurde `isy-sonderzeichen` erweitert. Um die ursprüngliche Funktionalität zu erhalten,
-wurde die Bibliothek in zwei Packages aufgeteilt. Das _stringlatin1_1_ Package enthält die ursprüngliche Funktionalität. Die Umsetzung der
-DIN SPEC 91379 wurde im Package _dinspec91379_ umgesetzt. Die Architektur und Funktionsweise der Komponente wurde im Zuge der
-Umsetzung nicht verändert.
-Eine Erweiterung des Zeichensatzes der DIN SPEC 91379 ist die DIN Norm 91379.
-Für diese wurde ein weiteres Package _dinnorm91379_ angelegt, welches die beiden anderen Packages zukünftig ersetzt.
+Im Zuge der Umsetzung der DIN SPEC 91379 wurde `isy-sonderzeichen` erweitert. Um die ursprüngliche Funktionalität zu erhalten, wurde die Bibliothek in zwei Packages aufgeteilt.
+Das Package `stringlatin1_1` enthält die ursprüngliche Funktionalität.
+Die Umsetzung der DIN SPEC 91379 wurde im Package `dinspec91379` umgesetzt.
+Die Architektur und Funktionsweise der Komponente wurde im Zuge der Umsetzung nicht verändert.
+Eine Erweiterung des Zeichensatzes der DIN SPEC 91379 ist die DIN-Norm 91379.
+Für diese wurde ein weiteres Package `dinnorm91379` angelegt, welches die beiden anderen Packages zukünftig ersetzt.
 
-NOTE: Das Paket _stringlatin1_1_ wird in zukünftigen Versionen entfernt.
-NOTE: Das Paket _dinspec91379_ wird in zukünftigen Versionen entfernt.
+IMPORTANT: Die Packages `stringlatin1_1` und `dinspec91379` werden in zukünftigen Versionen entfernt.
 
 [[funktionsweise]]
 === Funktionsweise
@@ -173,7 +175,7 @@ NOTE: Das Paket _dinspec91379_ wird in zukünftigen Versionen entfernt.
 Die Transformatoren arbeiten alle nach dem gleichen Schema.
 Sie unterscheiden sich nur durch unterschiedliche Tabellen, die zur Zeichentransformation herangezogen werden.
 
-. Alle Zeichen werden gemäß einer Mapping-Tabelle transformiert (Beispiel in xref:nutzungsvorgaben/master.adoc#table-transkription[Tabelle Transkription]).
+. Alle Zeichen werden gemäß einer Mapping-Tabelle transformiert (Beispiel in xref:nutzungsvorgaben/tabellen.adoc#table-transkription[Tabelle Transkription]).
 . Unbekannte oder nicht abbildbare Zeichen werden durch Leerzeichen ersetzt.
 . Leerzeichen am Anfang und am Ende der Zeichenkette werden entfernt.
 . Zwei aufeinanderfolgende Leerzeichen werden durch ein einzelnes Leerzeichen ersetzt.
@@ -189,14 +191,14 @@ Dieser Transformator ermöglicht keine Vorgabe der maximalen Zeichenlänge.
 
 *Transkription Transformator*
 
-Dieser Transformator führt die in xref:nutzungsvorgaben/master.adoc#table-transkription[Tabelle Transkription] dargestellte Transkription durch.
+Dieser Transformator führt die in xref:nutzungsvorgaben/tabellen.adoc#table-transkription[Tabelle Transkription] dargestellte Transkription durch.
 Die Transkription ist eine aussprachebasierte Darstellung der übergebenen Zeichenkette, die mit dem ASCII-Zeichensatz dargestellt werden kann.
 Dieser Transformator ermöglicht keine Vorgabe der maximalen Zeichenlänge.
 
 *Suchform Transformator*
 
-Mit dem Suchform Transformator ist es möglich, Zeichenketten, welche aus normativen Buchstaben (Datentyp C) der DIN Norm 91379 bestehen, auf die Grundbuchstaben A-Z abzubilden.
-Die Transformationsregeln sind der xref:nutzungsvorgaben/master.adoc#table-suchform[Tabelle Suchform] zu entnehmen.
+Mit diesem Transformator ist es möglich, Zeichenketten, welche aus normativen Buchstaben (Datentyp C) der DIN-Norm 91379 bestehen, auf die Grundbuchstaben A-Z abzubilden.
+Die Transformationsregeln sind der xref:nutzungsvorgaben/tabellen.adoc#table-suchform[Tabelle Suchform] zu entnehmen.
 Dieser Transformator ermöglicht keine Vorgabe der maximalen Zeichenlänge.
 Es ist also möglich, dass transformierte Texte nicht mehr vom System verarbeitet werden können, wenn diese nicht mehr die maximale Zeichenlänge einhalten können.
 
@@ -206,15 +208,15 @@ Wenn Datensätze und Suchanfragen unter Anwendung der Suchform normalisiert werd
 
 *Legacy Transformator*
 
-Mit dem Legacy Transformator ist es möglich, Texte, welche mit Zeichen der DIN Norm 91379 geschrieben wurden, umzuwandeln, sodass diese von Systemen verarbeitet werden können, welche nur den Zeichensatz String Latin 1.1 beherrschen.
-Die Transformationsregeln sind der  xref:nutzungsvorgaben/master.adoc#table-legacy[Tabelle Legacy] zu entnehmen.
+Mit diesem Transformator ist es möglich, Texte, welche mit Zeichen der DIN-Norm 91379 geschrieben wurden, umzuwandeln, sodass diese von Systemen verarbeitet werden können, welche nur den Zeichensatz String Latin 1.1 beherrschen.
+Die Transformationsregeln sind der  xref:nutzungsvorgaben/tabellen.adoc#table-legacy[Tabelle Legacy] zu entnehmen.
 Dieser Transformator ermöglicht keine Vorgabe der maximalen Zeichenlänge.
 Es ist also möglich, dass transformierte Texte nicht mehr vom System verarbeitet werden können, wenn diese nicht mehr die maximale Zeichenlänge einhalten können.
 
-Der Transformator dient dazu die Kompatibilität zu Systemen herzustellen, die noch nicht auf die DIN Norm 91379 umgestellt sind.
-Die Frist zur Umstellung endet im November 2024.
-Danach soll auch der Legacy Transformator aus isy-sonderzeichen entfernt werden.
-Er ist deswegen bereits als `Deprecated` markiert.
+IMPORTANT: Der Transformator dient dazu die Kompatibilität zu Systemen herzustellen, die noch nicht auf die DIN-Norm 91379 umgestellt sind.
+*Die Frist zur Umstellung endet im November 2024.*
+Danach soll auch der Legacy Transformator aus `isy-sonderzeichen` entfernt werden.
+Er ist deswegen bereits als `deprecated` markiert.
 
 *Legacy Transformator To DIN SPEC 913379*
 
@@ -223,7 +225,7 @@ Analog zum Legacy-Transformator wird dieser Transformator genutzt, um Zeichen in
 [[funktionsweise-zeichen-validator]]
 ==== Zeichen-Validator
 
-Der Zeichen-Validator kann verwendet werden, um zu überprüfen, ob eine Zeichenkette nur Zeichen eines bestimmten Datentyps der DIN Norm 91379 enthält.
+Der Zeichen-Validator kann verwendet werden, um zu überprüfen, ob eine Zeichenkette nur Zeichen eines bestimmten Datentyps der DIN-Norm 91379 enthält.
 
 [[einbindung-der-bibliothek-in-eine-anwendung]]
 === Einbindung der Bibliothek in eine Anwendung
@@ -257,7 +259,7 @@ Die Transformator-Factory und ein konkreter Transformator werden über Spring in
 <beans>
 <bean id="sonderzeichenTransformatorFactory" class="de.bund.bva.isyfact.sonderzeichen.stringlatin1_1.core.transformation.TransformatorFactory">
   <property name="transformator" ref="sonderzeichenTransformator"/>
-  <property name="transformationsTabelle" value="${Pfad_zu_einerzusaetzlichenTabelle}"/>
+  <property name="transformationsTabelle" value="${Pfad_zu_einerZusaetzlichenTabelle}"/>
 </bean>
 
 <bean id="sonderzeichenTransformator" class="de.bund.bva.isyfact.sonderzeichen.stringlatin1_1.core.transformation.impl.IdentischerTransformator"/>
@@ -265,13 +267,13 @@ Die Transformator-Factory und ein konkreter Transformator werden über Spring in
 ----
 
 In obigem Beispiel wird dabei der Transformator _IdentischerTransformator_ aus der ursprünglichen Umsetzung geladen.
-Jeder der Transformatoren setzt bereits eine fest implementierte Transformationstabelle nach einem bestimmten Vorgehen um (siehe <<funktionsweise>>).
+Jeder der <<funktionsweise-transformatoren>> setzt bereits eine fest implementierte Transformationstabelle nach einem bestimmten Vorgehen um.
 
 Bei der Konfiguration der _TransformatorFactory_ kann die zusätzliche (optionale) Eigenschaft _transformationsTabelle_ dazu genutzt werden, eine weitere Transformationstabelle anzugeben.
 Die Regeln in dieser Tabelle überschreiben dabei existierende alte Regeln.
 Es findet also eine Ergänzung der existierenden Regeln statt.
 
-Das Vorgehen für die Komponenten der DIN Norm 91379 ist analog. Es müssen lediglich die Package-Pfade der Klassen aktualisiert werden.
+Das Vorgehen für die Komponenten der DIN-Norm 91379 ist analog. Es müssen lediglich die Package-Pfade der Klassen aktualisiert werden.
 
 [[instanziierung-des-zeichen-validators]]
 ==== Instanziierung des Zeichen-Validators
@@ -291,11 +293,10 @@ Folgende Methoden stehen zur Verfügung:
 
 .Transformator-Methoden
 [id="table-Transformator-Methoden",reftext="{table-caption} {counter:tables}"]
-[cols=",",options="header",]
+[cols="a,a",options="header",]
 |====
 |Methode |Parameter
-a|
-`transformiere`
+|`transformiere`
 
 Transformiert eine Zeichenkette auf der Basis der zugrunde liegenden Transformationstabelle.
 
@@ -305,13 +306,11 @@ Doppelte Leerzeichen innerhalb der Zeichenkette werden zu einem Leerzeichen umge
 
 Gibt den transformierten String aus.
 
-a|
-`String zeichenkette`
+|`String zeichenkette`
 
 Die zu transformierende Zeichenkette
 
-a|
-`transformiere`
+|`transformiere`
 
 Transformiert eine Zeichenkette analog der zuvor beschriebenen `transformiere`-Funktion.
 Stellt zusätzlich sicher, dass die Zeichenkette nach der Operation die angegebene Länge hat.
@@ -319,8 +318,7 @@ Es wird dabei nicht unterschieden, ob die ursprüngliche Zeichenkettenlänge ber
 
 Gibt den transformierten String aus.
 
-a|
-`String zeichenkette`
+|`String zeichenkette`
 
 Die zu transformierende Zeichenkette
 
@@ -328,21 +326,18 @@ Die zu transformierende Zeichenkette
 
 Die maximale Länge der Zeichenkette
 
-a|
-`transformiereOhneTrim`
+|`transformiereOhneTrim`
 
 Transformiert eine Zeichenkette analog der zuvor beschriebenen `transformiere`-Funktion.
 Es werden jedoch keine Leerzeichen am Anfang/Ende der übergebenen Zeichenkette entfernt.
 
 Gibt den transformierten String aus.
 
-a|
-`String zeichenkette`
+|`String zeichenkette`
 
 Die zu transformierende Zeichenkette
 
-a|
-`transformiereMitMetadaten`
+|`transformiereMitMetadaten`
 
 Transformiert eine Zeichenkette auf der Basis der zugrunde liegenden Transformationstabelle.
 
@@ -352,13 +347,11 @@ Doppelte Leerzeichen innerhalb der Zeichenkette werden zu einem Leerzeichen umge
 
 Gibt ein Objekt vom Typ `Transformation` zurück, welches den transformierten String und die Metadaten der Transformation enthält.
 
-a|
-`String zeichenkette`
+|`String zeichenkette`
 
 Die zu transformierende Zeichenkette
 
-a|
-`transformiereMitMetadaten`
+|`transformiereMitMetadaten`
 
 Transformiert eine Zeichenkette analog der zuvor beschriebenen `transformiere`-Funktion.
 Stellt zusätzlich sicher, dass die Zeichenkette nach der Operation die angegebene Länge hat.
@@ -366,8 +359,7 @@ Es wird dabei nicht unterschieden, ob die ursprüngliche Zeichenkettenlänge ber
 
 Gibt ein Objekt vom Typ `Transformation` zurück, welches den transformierten String und die Metadaten der Transformation enthält.
 
-a|
-`String zeichenkette`
+|`String zeichenkette`
 
 Die zu transformierende Zeichenkette
 
@@ -375,39 +367,33 @@ Die zu transformierende Zeichenkette
 
 Die maximale Länge der Zeichenkette
 
-a|
-`transformiereOhneTrimMitMetadaten`
+|`transformiereOhneTrimMitMetadaten`
 
 Transformiert eine Zeichenkette analog der zuvor beschriebenen `transformiere`-Funktion.
 Es werden jedoch keine Leerzeichen am Anfang/Ende der übergebenen Zeichenkette entfernt.
 
 Gibt ein Objekt vom Typ `Transformation` zurück, welches den transformierten String und die Metadaten der Transformation enthält.
 
-a|
-`String zeichenkette`
+|`String zeichenkette`
 
 Die zu transformierende Zeichenkette
 
-a|
-`getRegulaererAusdruck`
+|`getRegulaererAusdruck`
 
 Gibt den regulären Ausdruck zurück, der alle gültigen Zeichenketten beschreibt, deren Zeichen in der jeweiligen Zeichenkategorie aufgeführt sind.
 
-a|
-`String[] kategorieListe`
+|`String[] kategorieListe`
 
 Eine Liste mit den Zeichenkategorien.
 Gültige Werte sind `LETTER, NUMBER, PUNCTUATION, SEPARATOR, SYMBOL, OTHER`.
 
 Die Werte sind der Konstantenklasse `ZeichenKategorie` zu entnehmen.
 
-a|
-`getGueltigeZeichen`
+|`getGueltigeZeichen`
 
 Gibt alle gültigen Zeichen des Transformators zurück.
 
-a|
-`String kategorie`
+|`String kategorie`
 
 Eine Zeichenkategorie aus `LETTER, NUMBER, PUNCTUATION, SEPARATOR, SYMBOL, OTHER`.
 
@@ -455,20 +441,18 @@ Folgende Methoden stehen zur Verfügung:
 
 .ZeichenValidator-Methoden
 [id="table-ZeichenValidator-Methoden",reftext="{table-caption} {counter:tables}"]
-[cols=",",options="header",]
+[cols="a,a",options="header",]
 |====
 |Methode |Parameter
-a|
-`isGueltigerString`
+|`isGueltigerString`
 
-Überprüft, ob eine Zeichenkette nur Zeichen eines in der DIN Norm 91379 definierten Datentyps enthält.
+Überprüft, ob eine Zeichenkette nur Zeichen eines in der DIN-Norm 91379 definierten Datentyps enthält.
 
 Leerzeichen am Anfang und am Ende der Zeichenkette werden entfernt.
 
 Doppelte Leerzeichen innerhalb der Zeichenkette werden zu einem Leerzeichen umgewandelt.
 
- a|
-`String zeichenkette`
+|`String zeichenkette`
 
 Die zu überprüfende Zeichenkette
 
@@ -486,7 +470,7 @@ Die Standardzeichen müssen von jeder Anwendung immer unterstützt werden.
 Die zusätzlichen Zeichen müssen nur unterstützt werden, wenn dies entsprechend vereinbart wurde.
 Die Festlegungen für die zulässigen Zeichen orientieren sich an den Festlegungen, die für das Meldewesen getroffen wurden.
 
-Die für die IsyFact zulässigen Zeichen werden im Folgenden aufgeführt (s. Kapitel xref:konzept/inhalt.adoc#festlegung-des-zeichensatzes-und-der-codierung[Festlegung des Zeichensatzes und der Codierung des Konzepts]).
+Die für die IsyFact zulässigen Zeichen werden im Folgenden aufgeführt (s. Kapitel xref:konzept.adoc#festlegung-des-zeichensatzes-und-der-codierung[Festlegung des Zeichensatzes und der Codierung] des Konzepts).
 
 [[standardzeichen]]
 ==== Standardzeichen
@@ -499,7 +483,5 @@ Die für die IsyFact zulässigen Zeichen werden im Folgenden aufgeführt (s. Kap
 [[zusaetzliche-zeichen]]
 ==== Zusätzliche Zeichen
 
-In der xref:nutzungsvorgaben/master.adoc#table-zusaetzliche-zeichen[Tabelle für zusätzliche Zeichen] sind die Zeichen dargestellt, die zusätzlich unterstützt werden.
-Damit die Zeichen in der Spalte „Glyph“ korrekt dargestellt werden, muss ein Font installiert sein, der alle Zeichen unterstützt. (z.B. Code2000, erhältlich unter https://www.code2001.com/[Code2000]).
-
-// end::inhalt[]
+In der xref:nutzungsvorgaben/tabellen.adoc#table-zusaetzliche-zeichen[Tabelle für zusätzliche Zeichen] sind die Zeichen dargestellt, die zusätzlich unterstützt werden.
+Damit die Zeichen in der Spalte "Glyph" korrekt dargestellt werden, muss ein Font installiert sein, der alle Zeichen unterstützt (z.B. Code2000, erhältlich unter https://www.code2001.com/[Code2000]).

@@ -3,12 +3,12 @@ package de.bund.bva.isyfact.sonderzeichen.dinspec91379.transformation;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class LegacyTransformatorTabelleTest {
 
@@ -24,12 +24,12 @@ public class LegacyTransformatorTabelleTest {
     @Test
     public void tabelleTest() throws IOException, URISyntaxException {
         // Load file containing all String.Latin 1.1 characters
-        String path = Paths.get(ClassLoader.getSystemResource("resources/tabellen").toURI()).toString();
-        List<String> identischLines = Files.readAllLines(Paths.get(path, "kategorie_identisch.kat"));
+        String path = Path.of(ClassLoader.getSystemResource("resources/tabellen").toURI()).toString();
+        List<String> identischLines = Files.readAllLines(Path.of(path, "kategorie_identisch.kat"));
         List<String> stringlatinChars = identischLines.stream().map(s -> s.split(" = ")[0]).collect(Collectors.toList());
 
         // Load Legacy Transformation Table
-        List<String> transformationTabelle = Files.readAllLines(Paths.get(path, "transformation_dinspec91379_zu_1_1.transform"));
+        List<String> transformationTabelle = Files.readAllLines(Path.of(path, "transformation_dinspec91379_zu_1_1.transform"));
 
         // Iterate over all entries in the transformation table
         for (int i = 0; i < transformationTabelle.size(); i++) {
@@ -40,7 +40,7 @@ public class LegacyTransformatorTabelleTest {
                 // Check if single symbol is part of String.Latin 1.1
                 for (String transformiertEinzeln : transformiertArray) {
                     if (!stringlatinChars.contains(transformiertEinzeln)) {
-                        Assert.fail("Fehlerhaftes Symbol in Zeile " + (i + 1) + ".");
+                        Assertions.fail("Fehlerhaftes Symbol in Zeile " + (i + 1) + ".");
                     }
                 }
             }

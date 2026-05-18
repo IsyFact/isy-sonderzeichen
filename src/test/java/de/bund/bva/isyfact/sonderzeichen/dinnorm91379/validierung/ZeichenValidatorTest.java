@@ -1,10 +1,9 @@
 package de.bund.bva.isyfact.sonderzeichen.dinnorm91379.validierung;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class ZeichenValidatorTest {
 
@@ -19,7 +18,7 @@ public class ZeichenValidatorTest {
 
     private ZeichenValidator validator;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         validator = new ZeichenValidator();
     }
@@ -99,14 +98,16 @@ public class ZeichenValidatorTest {
         assertFalse(validator.isGueltigerString(ZEICHEN_DIAKRIT, datentyp));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testDatentypNull() {
-        assertFalse(validator.isGueltigerString(ZEICHEN_E, null));
+        assertThrows(NullPointerException.class, () ->
+            assertFalse(validator.isGueltigerString(ZEICHEN_E, null)));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testZeichenketteNull() {
-        assertFalse(validator.isGueltigerString(null, Datentyp.E));
+        assertThrows(NullPointerException.class, () ->
+            assertFalse(validator.isGueltigerString(null, Datentyp.E)));
     }
 
 }

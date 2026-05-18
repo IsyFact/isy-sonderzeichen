@@ -93,7 +93,7 @@ public class ZeichenValidator {
         }
 
         // Add all characters to this datatype
-        Set<String> gueltigeZeichenSet = validCharactersByDatentyp.computeIfAbsent(datentyp, k -> new HashSet<>());
+        Set<String> gueltigeZeichenSet = validCharactersByDatentyp.computeIfAbsent(datentyp, _ -> new HashSet<>());
         gueltigeZeichenSet.addAll(zeichenketteSet);
     }
 

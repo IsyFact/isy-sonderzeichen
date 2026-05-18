@@ -1,16 +1,13 @@
 package de.bund.bva.isyfact.sonderzeichen.dinnorm91379;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class CharacterUtilTest {
 
@@ -24,24 +21,28 @@ public class CharacterUtilTest {
         assertArrayEquals(new char[] {'\u0063', '\u0328', '\u0306'}, CharacterUtil.parseString("0063+0328+0306"));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testNPEIfParseNullString() {
-        CharacterUtil.parseString(null);
+        assertThrows(NullPointerException.class, () ->
+            CharacterUtil.parseString(null));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testNPEIfCollectionIsEmpty() {
-        CharacterUtil.containsOnlyCharsFromSet(null, Collections.emptySet());
+        assertThrows(NullPointerException.class, () ->
+            CharacterUtil.containsOnlyCharsFromSet(null, Collections.emptySet()));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testNPEIfCharactersAreNull() {
-        CharacterUtil.containsOnlyCharsFromSet("", null);
+        assertThrows(NullPointerException.class, () ->
+            CharacterUtil.containsOnlyCharsFromSet("", null));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testNPEIfNull() {
-        CharacterUtil.containsOnlyCharsFromSet(null, null);
+        assertThrows(NullPointerException.class, () ->
+            CharacterUtil.containsOnlyCharsFromSet(null, null));
     }
 
     @Test
