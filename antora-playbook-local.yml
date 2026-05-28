@@ -12,7 +12,7 @@ content:
   sources:
     - url: ../isy-documentation
       branches: [master]
-      start_path: glossary
+      start_paths: [glossary, documentation-guide]
       version:
         'master': 'latest'
     - url: ../isy-sonderzeichen
@@ -23,10 +23,10 @@ content:
         'release/(*)': $1
         'develop': 'next'
         '(*)': $1
-#    - url: ../isy-sonderzeichen
-#      tags: 4.0.0
-#      start_path: isy-sonderzeichen-doc
-#      version: 4.0.0
+    - url: ../isy-sonderzeichen
+      tags: 4.0.0
+      start_path: isy-sonderzeichen-doc
+      version: 4.0.0
 runtime:
   fetch: true
   log:

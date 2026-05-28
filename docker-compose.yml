@@ -1,0 +1,15 @@
+services:
+  antora:
+    # use official Antora image
+    image: antora/antora:3.1.15
+    container_name: build-antora
+    # bind the project folder into the container so that relative paths in the playbook still work and the output can be written to the host filesystem
+    volumes:
+      - ..:/antora-work
+    working_dir: /antora-work/isy-sonderzeichen
+    command: ["antora", "antora-playbook-local.yml", "--to-dir", "/antora-work/isy-sonderzeichen/build/site"]
+    tty: true
+    stdin_open: false
+    restart: "no"
+
+
