@@ -38,7 +38,7 @@
         <maven.compiler.version>3.15.0</maven.compiler.version>
         <maven.javadoc.plugin.version>3.12.0</maven.javadoc.plugin.version>
         <maven.source.plugin.version>3.4.0</maven.source.plugin.version>
-        <maven.jacoco.version>0.8.14</maven.jacoco.version>
+        <maven.jacoco.version>0.8.15</maven.jacoco.version>
 
         <!-- maven-enforcer-plugin -->
         <enforced.jdk.version>[25,26)</enforced.jdk.version>
